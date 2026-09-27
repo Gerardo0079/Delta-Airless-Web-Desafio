@@ -1,0 +1,177 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES 
+   ========================================================================== */
+:root {
+  /* Colores Corporativos  */
+  --color-delta-azul: #0a42aa;      
+  --color-delta-celeste: #3498db;    
+  --color-fondo-oscuro: #1c1c1c;     
+  --color-fondo-gris: #2d2d2d;       
+  --color-texto-blanco: #ffffff;
+  --color-texto-gris: #b3b3b3;       
+  --color-acento-naranja: #f39c12;   
+
+  /* Tipografía (Alternativas comunes para web) */
+  --fuente-titulos: 'Montserrat', 'Arial Black', sans-serif;
+  --fuente-cuerpo: 'Roboto', 'Arial', sans-serif;
+
+  
+  --espacio-pequeno: 10px;
+  --espacio-mediano: 20px;
+  --espacio-grande: 40px;
+}
+
+/* ==========================================================================
+   2. RESET Y ESTILOS BASE (Aplica a todas las páginas)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: var(--fuente-cuerpo);
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-blanco);
+  line-height: 1.6;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ==========================================================================
+   3. ESTILOS COMPARTIDOS (Header, Footer, Navegación)
+   ========================================================================== */
+/* Aquí va el código del menú de navegación que usarán todas las páginas */
+
+/* Contenedor central fluido */
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Botones Reutilizables */
+.btn-primario, .btn-secundario {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primario {
+    background-color: var(--color-delta-azul);
+    color: var(--color-texto-blanco);
+    margin-top: 20px;
+}
+
+.btn-primario:hover, .btn-primario:focus-visible {
+    background-color: var(--color-delta-celeste);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    border: 2px solid var(--color-delta-celeste);
+    color: var(--color-delta-celeste);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-delta-celeste);
+    color: var(--color-texto-blanco);
+}
+
+
+/* 1. Reglas base (Móvil primero) */
+.header-principal {
+    background-color: #111111;
+    border-bottom: 2px solid var(--color-delta-azul);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-contenido {
+    display: flex;
+    flex-direction: column; /* Apilado en móviles */
+    align-items: center;
+    gap: 15px;
+}
+
+
+@media (min-width: 768px) {
+    /* Header horizontal en pantallas grandes */
+    .header-contenido {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+.logo-marca {
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    color: var(--color-texto-blanco);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.logo-marca span {
+    color: var(--color-delta-celeste);
+}
+
+/* Flexbox para la barra de navegación */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los enlaces bajen de línea si no caben */
+    gap: 15px;
+    justify-content: center;
+}
+
+.nav-menu a {
+    color: var(--color-texto-blanco);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu a.activo {
+    color: var(--color-delta-celeste);
+    border-bottom: 2px solid var(--color-delta-celeste);
+}
+
+
+
+/* ==========================================================================
+   4. ESTILOS ESPECÍFICOS POR PÁGINA 
+   ========================================================================== */
+
+/* --- INTEGRANTE 1: INICIO (index.html) --- */
+
+
+/* --- INTEGRANTE 2: PRODUCTOS (productos.html) --- */
+
+
+/* --- INTEGRANTE 3: SERVICIOS Y CONTACTO (servicios.html / contacto.html) --- */
+
+
+
+
