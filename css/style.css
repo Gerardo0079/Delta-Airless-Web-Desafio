@@ -168,30 +168,7 @@ img {
 
 
 /* --- INTEGRANTE 2: PRODUCTOS (productos.html) --- */
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--color-fondo-oscuro);
-            color: var(--color-texto-blanco);
-            font-family: var(--fuente-cuerpo);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--color-fondo-gris);
-            padding: var(--espacio-mediano) var(--espacio-grande);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid var(--color-delta-azul);
-        }
-
-        .logo h1 {
+.logo h1 {
             font-family: var(--fuente-titulos);
             color: var(--color-delta-celeste);
             font-size: 2rem;
