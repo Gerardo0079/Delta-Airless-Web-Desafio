@@ -466,6 +466,13 @@ img {
         }
 
 /* --- INTEGRANTE 2: PRODUCTOS (productos.html) --- */
+.hero h2 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    text-transform: uppercase;
+    margin-bottom: var(--espacio-mediano);
+    overflow-wrap: normal;
+}
 #catalogo {
     padding: 60px 0;
 }
