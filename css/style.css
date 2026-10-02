@@ -308,7 +308,138 @@ img {
 
 
 /* --- INTEGRANTE 2: PRODUCTOS (productos.html) --- */
+.hero-producto {
+            text-align: center;
+            padding: var(--espacio-grande) 0;
+        }
 
+        .hero-producto h2 {
+            font-family: var(--fuente-titulos);
+            font-size: 2.2rem;
+            color: var(--color-delta-celeste);
+            margin-bottom: var(--espacio-pequeno);
+        }
+
+        .hero-producto p {
+            color: var(--color-texto-gris);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .seccion-catalogo {
+            margin-bottom: var(--espacio-grande);
+        }
+
+        .seccion-catalogo h2 {
+            font-family: var(--fuente-titulos);
+            font-size: 1.8rem;
+            margin-bottom: var(--espacio-mediano);
+            border-left: 5px solid var(--color-acento-naranja);
+            padding-left: var(--espacio-pequeno);
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--espacio-mediano);
+        }
+
+        .card-producto {
+            background-color: var(--color-fondo-gris);
+            border-radius: 8px;
+            padding: var(--espacio-mediano);
+            border-top: 4px solid var(--color-delta-azul);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .card-producto:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-producto h3 {
+            font-family: var(--fuente-titulos);
+            font-size: 1.3rem;
+            color: var(--color-delta-celeste);
+            margin-bottom: var(--espacio-pequeno);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .card-producto ul {
+            list-style: none;
+            margin-bottom: var(--espacio-mediano);
+        }
+
+        .card-producto ul li {
+            font-size: 0.9rem;
+            padding: 4px 0;
+            color: var(--color-texto-gris);
+        }
+
+        .card-producto ul li strong {
+            color: var(--color-texto-blanco);
+        }
+
+        .tipos-pintura {
+            font-size: 0.85rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--color-acento-naranja);
+            color: var(--color-texto-gris);
+            margin-bottom: var(--espacio-mediano);
+        }
+
+        .tipos-pintura strong {
+            color: var(--color-acento-naranja);
+        }
+
+        .seccion-ventajas {
+            background-color: var(--color-fondo-gris);
+            padding: var(--espacio-grande);
+            border-radius: 8px;
+            margin-bottom: var(--espacio-grande);
+        }
+
+        .seccion-ventajas h3 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-delta-celeste);
+            margin-bottom: var(--espacio-mediano);
+            font-size: 1.6rem;
+        }
+
+        .seccion-ventajas ul {
+            list-style-type: disc;
+            padding-left: var(--espacio-mediano);
+        }
+
+        .seccion-ventajas ul li {
+            margin-bottom: var(--espacio-pequeno);
+            color: var(--color-texto-gris);
+        }
+
+        .footer-principal {
+            background-color: var(--color-fondo-gris);
+            text-align: center;
+            padding: var(--espacio-grande) 0;
+            border-top: 2px solid var(--color-delta-azul);
+            color: var(--color-texto-gris);
+        }
+
+        .footer-principal h3 {
+            color: var(--color-delta-celeste);
+            font-family: var(--fuente-titulos);
+            margin-bottom: var(--espacio-pequeno);
+        }
+
+        .footer-principal p {
+            margin-bottom: 5px;
+        }
 
 /* --- INTEGRANTE 3: SERVICIOS Y CONTACTO (servicios.html / contacto.html) --- */
 
