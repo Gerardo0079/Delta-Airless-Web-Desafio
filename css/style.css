@@ -126,22 +126,10 @@ img {
     border-bottom: 1px solid var(--color-borde);
 }
 
-/* Franja diagonal decorativa de fondo (estilo catálogo) */
-.hero-pagina::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -8%;
-    width: 22%;
-    height: 100%;
-    background-color: var(--color-delta-azul);
-    opacity: 0.35;
-    transform: skewX(-25deg);
-    pointer-events: none;
-}
+
 
 /* minmax(0, 1fr) deja que la columna se encoja sin empujar el texto */
-.hero-contenido {
+.hero-pagina .hero-contenido {
     position: relative;
     z-index: 1; /* queda por encima de la franja decorativa */
     display: grid;
