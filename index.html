@@ -7,7 +7,7 @@
     <title>Delta Airless | Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    </style>
+
 </head>
 <body>
     <header class="header-principal">
@@ -24,11 +24,14 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
+
+            <a href="index.html" class="logo-empresa">
+                <img src="img/Delta_logo.jpeg" alt="Logo Delta Airless">
+            </a>
         </div>
     </header>
 
     <main>
-        HERO
         <section class="hero">
             <div class="contenedor hero-contenido">
                 <div class="hero-texto">
@@ -41,12 +44,12 @@
                     </div>
                 </div>
                 <div class="hero-imagen">
-                    <img src="img/maquina_Delta_Pintura.jpeg" Máquina de pintura Airless Delta industrial>
+                    <img src="img/maquina_Delta_Pintura.jpeg" alt="Máquina de pintura Airless Delta industrial" onerror="this.onerror=null;this.src=IMG_RESPALDO;">
                 </div>
             </div>
         </section>
 
-         ESTADÍSTICAS
+   
         <section class="estadisticas" aria-label="Datos destacados">
             <div class="contenedor grid-stats">
                 <div class="stat"><strong>ISO 9001</strong><span>Calidad certificada</span></div>
@@ -56,7 +59,6 @@
             </div>
         </section>
 
-         POR QUÉ ELEGIRNOS 
         <section class="seccion">
             <div class="contenedor">
                 <h2 class="seccion-titulo">¿Por qué elegir Delta Airless?</h2>
@@ -82,7 +84,7 @@
             </div>
         </section>
 
-         CÓMO TRABAJAMOS 
+
         <section class="seccion seccion-gris">
             <div class="contenedor">
                 <h2 class="seccion-titulo">Así de fácil es empezar</h2>
@@ -105,7 +107,25 @@
             </div>
         </section>
 
-         LLAMADA A LA ACCIÓN 
+        <section class="seccion" id="videos">
+            <div class="contenedor">
+                <h2 class="seccion-titulo">Mira nuestras máquinas en acción</h2>
+                <p class="seccion-subtitulo">Los videos más vistos de nuestro Instagram <strong>@airlessv</strong>.</p>
+                <div class="grid-videos" id="grid-videos"></div>
+                <div class="centrar">
+                    <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener" class="btn-secundario">Ver más en Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion seccion-gris" id="testimonios">
+            <div class="contenedor">
+                <h2 class="seccion-titulo">Lo que dicen nuestros clientes</h2>
+                <p class="seccion-subtitulo">Comentarios reales de quienes ya pintan con Delta Airless.</p>
+                <div class="grid-testimonios" id="grid-testimonios"></div>
+            </div>
+        </section>
+
         <section class="cta-final">
             <div class="contenedor">
                 <h2>¿Listo para mejorar tus acabados?</h2>
@@ -121,5 +141,56 @@
             <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
         </div>
     </footer>
+
+    <script>
+        var REELS = [
+            'https://www.instagram.com/reel/DdNpLOKu44M/?stkn=MTZ2amh5aWxiNHIzbg==',
+            'https://www.instagram.com/reel/Dcoe6vaRVCK/?stkn=MTNyZ3VhaGVmejJhNg=='
+        ];
+        var TESTIMONIOS = [
+         { texto: 'Bonita máquina. Yo he tenido toda esa he manejado para pintar una pregunta qué precio tiene la 495 Kien Es'
+         , autor: 'anonimo' },
+         { texto: 'Muy buena maquina funciona a la perfeccion', autor: 'anonimo' },
+         { texto: 'excelente maquina y servico', autor: 'anonimo' }
+        ];
+
+        var gridVideos = document.getElementById('grid-videos');
+        if (REELS.length) {
+            REELS.forEach(function (url) {
+                var d = document.createElement('div');
+                d.className = 'video-card';
+                d.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + url +
+                    '" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">Ver en Instagram</a></blockquote>';
+                gridVideos.appendChild(d);
+            });
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.instagram.com/embed.js';
+            document.body.appendChild(s);
+        } else {
+            for (var i = 1; i <= 3; i++) {
+                gridVideos.insertAdjacentHTML('beforeend',
+                    '<div class="video-card video-vacio"><div class="icono" aria-hidden="true">🎬</div>' +
+                    '<p>Video ' + i + ' próximamente</p>' +
+                    '<a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Míralo en @airlessv</a></div>');
+            }
+        }
+
+        var gridTest = document.getElementById('grid-testimonios');
+        var lista = TESTIMONIOS.length ? TESTIMONIOS : [
+            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' },
+            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' },
+            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' }
+        ];
+        lista.forEach(function (t) {
+            var a = document.createElement('article');
+            a.className = 'testimonio';
+            var est = document.createElement('div'); est.className = 'estrellas'; est.textContent = '★★★★★';
+            var p = document.createElement('p'); p.textContent = '“' + t.texto + '”';
+            var c = document.createElement('cite'); c.textContent = '— ' + t.autor;
+            a.appendChild(est); a.appendChild(p); a.appendChild(c);
+            gridTest.appendChild(a);
+        });
+    </script>
 </body>
 </html>
