@@ -533,6 +533,7 @@ img {
     border-left: 3px solid var(--color-delta-celeste);
     margin-top: auto;
 }
+
 .imagen-producto {
     width: 100%;
     height: 200px; /* Altura fija para que todas las tarjetas midan lo mismo */
