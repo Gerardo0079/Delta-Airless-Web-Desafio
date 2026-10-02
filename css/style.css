@@ -428,6 +428,29 @@ img {
     border-radius: 8px;
     border: 2px solid var(--color-delta-azul);
 }
+/* Anula las reglas de .hero de la sección 5 solo en inicio */
+.inicio .hero {
+    text-align: left;
+}
+
+.inicio .hero .hero-contenido {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    text-align: left;
+}
+
+.inicio .hero .hero-texto p {
+    margin: 0;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .inicio .hero .hero-contenido {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+    }
+}
 
 /* --- 4.2 Estadísticas --- */
 .inicio .estadisticas {
@@ -1223,27 +1246,4 @@ img {
 
 .pregunta-frecuente p {
     color: var(--color-texto-gris);
-}
-/* Anula las reglas de .hero de la sección 5 solo en inicio */
-.inicio .hero {
-    text-align: left;
-}
-
-.inicio .hero .hero-contenido {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: stretch;
-    text-align: left;
-}
-
-.inicio .hero .hero-texto p {
-    margin: 0;
-    text-align: left;
-}
-
-@media (min-width: 768px) {
-    .inicio .hero .hero-contenido {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
-    }
 }
