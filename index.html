@@ -7,7 +7,6 @@
     <title>Delta Airless | Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
     <header class="header-principal">
@@ -40,7 +39,7 @@
                     </div>
                 </div>
                 <div class="hero-imagen">
-                    <img src="img/Delta_logo.jpeg" alt="logo-marca">
+                    <img src="img/Delta_logo.jpeg" alt="Logo de Delta Industrial Paint Machine">
                 </div>
             </div>
         </section>
@@ -108,7 +107,14 @@
             <div class="contenedor">
                 <h2 class="seccion-titulo">Mira nuestras máquinas en acción</h2>
                 <p class="seccion-subtitulo">Los videos más vistos de nuestro Instagram <strong>@airlessv</strong>.</p>
-                <div class="grid-videos" id="grid-videos"></div>
+                <div class="grid-videos">
+                    <div class="video-card">
+                        <iframe src="https://www.instagram.com/reel/DdNpLOKu44M/embed" title="Video de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card">
+                        <iframe src="https://www.instagram.com/reel/Dcoe6vaRVCK/embed" title="Video de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
                 <div class="centrar">
                     <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener" class="btn-secundario">Ver más en Instagram</a>
                 </div>
@@ -119,7 +125,23 @@
             <div class="contenedor">
                 <h2 class="seccion-titulo">Lo que dicen nuestros clientes</h2>
                 <p class="seccion-subtitulo">Comentarios reales de quienes ya pintan con Delta Airless.</p>
-                <div class="grid-testimonios" id="grid-testimonios"></div>
+                <div class="grid-testimonios">
+                    <article class="testimonio">
+                        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+                        <p>“Bonita máquina. Yo he tenido toda esa he manejado para pintar una pregunta qué precio tiene la 495 Kien Es”</p>
+                        <cite>— Anónimo</cite>
+                    </article>
+                    <article class="testimonio">
+                        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+                        <p>“Muy buena maquina funciona a la perfeccion”</p>
+                        <cite>— Anónimo</cite>
+                    </article>
+                    <article class="testimonio">
+                        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+                        <p>“excelente maquina y servico”</p>
+                        <cite>— Anónimo</cite>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -142,55 +164,5 @@
              <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
         </div>
     </footer>
-    <script>
-        var REELS = [
-            'https://www.instagram.com/reel/DdNpLOKu44M/?stkn=MTZ2amh5aWxiNHIzbg==',
-            'https://www.instagram.com/reel/Dcoe6vaRVCK/?stkn=MTNyZ3VhaGVmejJhNg=='
-        ];
-        var TESTIMONIOS = [
-         { texto: 'Bonita máquina. Yo he tenido toda esa he manejado para pintar una pregunta qué precio tiene la 495 Kien Es'
-         , autor: 'anonimo' },
-         { texto: 'Muy buena maquina funciona a la perfeccion', autor: 'anonimo' },
-         { texto: 'excelente maquina y servico', autor: 'anonimo' }
-        ];
-
-        var gridVideos = document.getElementById('grid-videos');
-        if (REELS.length) {
-            REELS.forEach(function (url) {
-                var d = document.createElement('div');
-                d.className = 'video-card';
-                d.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + url +
-                    '" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">Ver en Instagram</a></blockquote>';
-                gridVideos.appendChild(d);
-            });
-            var s = document.createElement('script');
-            s.async = true;
-            s.src = 'https://www.instagram.com/embed.js';
-            document.body.appendChild(s);
-        } else {
-            for (var i = 1; i <= 3; i++) {
-                gridVideos.insertAdjacentHTML('beforeend',
-                    '<div class="video-card video-vacio"><div class="icono" aria-hidden="true">🎬</div>' +
-                    '<p>Video ' + i + ' próximamente</p>' +
-                    '<a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Míralo en @airlessv</a></div>');
-            }
-        }
-
-        var gridTest = document.getElementById('grid-testimonios');
-        var lista = TESTIMONIOS.length ? TESTIMONIOS : [
-            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' },
-            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' },
-            { texto: 'Aquí irá un comentario real de un cliente satisfecho.', autor: 'Nombre del cliente' }
-        ];
-        lista.forEach(function (t) {
-            var a = document.createElement('article');
-            a.className = 'testimonio';
-            var est = document.createElement('div'); est.className = 'estrellas'; est.textContent = '★★★★★';
-            var p = document.createElement('p'); p.textContent = '“' + t.texto + '”';
-            var c = document.createElement('cite'); c.textContent = '— ' + t.autor;
-            a.appendChild(est); a.appendChild(p); a.appendChild(c);
-            gridTest.appendChild(a);
-        });
-    </script>
 </body>
 </html>
