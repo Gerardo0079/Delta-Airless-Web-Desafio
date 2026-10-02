@@ -119,11 +119,8 @@ img {
    Móvil: apilado. Escritorio (900px): dos columnas.
    -------------------------------------------------------------------------- */
 .hero-pagina {
-    position: relative;
-    overflow: hidden; /* recorta la franja decorativa que sobresale */
     padding: 50px 0;
-    background: linear-gradient(135deg, #111111 0%, var(--color-fondo-oscuro) 65%);
-    border-bottom: 1px solid var(--color-borde);
+    background: linear-gradient(135deg, var(--color-fondo-oscuro) 0%, #0a1f4d 100%); /* mismo degradado del inicio y productos */
 }
 
 
@@ -172,8 +169,7 @@ img {
 
 @media (min-width: 900px) {
     .hero-pagina { padding: 80px 0; }
-    .hero-contenido { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 50px; }
-    .hero-pagina h1 { font-size: clamp(2rem, 3.6vw, 3rem); } /* columna más angosta = letra más chica */
+    .hero-pagina h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
 }
 
 
@@ -759,8 +755,9 @@ img {
 .seccion-llamado-accion {
     padding: 70px 0;
     text-align: center;
-    background: linear-gradient(135deg, rgba(10, 66, 170, 0.55), rgba(17, 17, 17, 0.95)), var(--color-fondo-gris);
+    background: linear-gradient(135deg, #0a1f4d, var(--color-delta-azul)); /* igual que .cta-final del inicio */
 }
+
 .seccion-llamado-accion h2 {
     font-family: var(--fuente-titulos);
     font-size: clamp(1.5rem, 5vw, 2.4rem);
