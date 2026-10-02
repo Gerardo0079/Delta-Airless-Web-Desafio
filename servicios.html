@@ -3,29 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delta Airless | Servicios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="description" content="Servicio técnico, mantenimiento preventivo y repuestos para máquinas Airless DELTA en El Salvador.">
+    <title>Servicios | Delta Airless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header class="header-principal">
         <div class="contenedor header-contenido">
             <a href="index.html" class="logo-marca">
                 DELTA <span>Airless</span>
             </a>
-            
             <nav aria-label="Navegación principal">
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="activo">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Productos</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="servicios.html" class="activo" aria-current="page">Servicios</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    
+    <main>
+
+        <!-- HERO -->
+        <section class="hero-pagina" aria-labelledby="titulo-servicios">
+            <div class="contenedor hero-contenido">
+                <div>
+                    <p class="hero-etiqueta">Servicio técnico especializado</p>
+                    <h1 id="titulo-servicios">Servicios de mantenimiento <span>Airless</span></h1>
+                    <p class="hero-descripcion">Contamos con personal capacitado para realizar mantenimiento y reparación de máquinas Airless DELTA, para que tu equipo trabaje siempre a su máximo rendimiento.</p>
+                    <div class="grupo-botones">
+                        <a href="contacto.html#formulario" class="btn-primario">Solicitar servicio</a>
+                        <a href="#frecuencia" class="btn-secundario">Ver frecuencia</a>
+                    </div>
+                </div>
+                <figure class="marco-imagen">
+                    <!-- IMAGEN: técnico o trabajador aplicando pintura con equipo Airless -->
+                    <img src="img/servicios-hero.jpg" alt="Técnico trabajando con una máquina Airless" width="800" height="600">
+                </figure>
+            </div>
+        </section>
+
+        <!-- DATOS DE CONFIANZA (4 tarjetas centradas con ícono) -->
+        <section class="seccion-respaldo" aria-label="Respaldo de la empresa">
+            <ul class="contenedor lista-respaldo">
+                <li class="tarjeta-respaldo">
+                    <span class="icono-respaldo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </span>
+                    <strong class="titulo-respaldo">ISO 9001</strong>
+                    <span class="texto-respaldo">Proveedor certificado en gestión de calidad</span>
+                </li>
+                <li class="tarjeta-respaldo">
+                    <span class="icono-respaldo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                    </span>
+                    <strong class="titulo-respaldo">Desde 2010</strong>
+                    <span class="texto-respaldo">Operando en El Salvador</span>
+                </li>
+                <li class="tarjeta-respaldo">
+                    <span class="icono-respaldo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z"/></svg>
+                    </span>
+                    <strong class="titulo-respaldo">Preventivo</strong>
+                    <span class="texto-respaldo">Incluido un mes después de tu compra</span>
+                </li>
+                <li class="tarjeta-respaldo">
+                    <span class="icono-respaldo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    </span>
+                    <strong class="titulo-respaldo">Personal capacitado</strong>
+                    <span class="texto-respaldo">Comprometidos con la durabilidad de tu equipo</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FRECUENCIA DE MANTENIMIENTO -->
+        <section class="seccion-pagina" id="frecuencia" aria-labelledby="titulo-frecuencia">
+            <div class="contenedor">
+                <h2 class="titulo-seccion" id="titulo-frecuencia">Frecuencia de <span>tareas principales</span></h2>
+                <p class="texto-introduccion">Un plan de mantenimiento constante alarga la vida útil de tu máquina y mantiene estable la presión de trabajo.</p>
+                <div class="grid-mantenimiento">
+                    <article class="tarjeta-mantenimiento">
+                        <span class="numero-frecuencia">01</span>
+                        <h3>Diario</h3>
+                        <p>Limpieza del sistema, filtro y pistola.</p>
+                    </article>
+                    <article class="tarjeta-mantenimiento">
+                        <span class="numero-frecuencia">02</span>
+                        <h3>Semanal</h3>
+                        <p>Revisión de mangueras y conexiones.</p>
+                    </article>
+                    <article class="tarjeta-mantenimiento">
+                        <span class="numero-frecuencia">03</span>
+                        <h3>Mensual</h3>
+                        <p>Cambio de aceite (en modelos con bomba lubricada) y revisión de empaques.</p>
+                    </article>
+                    <article class="tarjeta-mantenimiento">
+                        <span class="numero-frecuencia">04</span>
+                        <h3>Anual</h3>
+                        <p>Servicio completo con reemplazo de piezas desgastadas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIÓN TÉCNICA -->
+        <section class="seccion-pagina seccion-fondo-gris" aria-labelledby="titulo-tecnico">
+            <div class="contenedor">
+                <h2 class="titulo-seccion" id="titulo-tecnico">Tecnología que <span>facilita el servicio</span></h2>
+
+                <article class="info-bloque">
+                    <figure class="marco-imagen">
+                        <!-- IMAGEN: máquina Airless DELTA (motor brushless) -->
+                        <img src="img/servicios-brushless.jpg" alt="Máquina Airless DELTA con motor brushless" width="800" height="600">
+                    </figure>
+                    <div>
+                        <h3>Motor Brushless</h3>
+                        <p>El Airless con motor brushless (sin escobillas) es una versión moderna y más eficiente de las máquinas de pintura Airless tradicionales. Ofrece mayor durabilidad, menor mantenimiento y mejor rendimiento, especialmente en trabajos profesionales o de alta exigencia.</p>
+                        <ul class="lista-beneficios">
+                            <li>Mayor durabilidad</li>
+                            <li>Menor mantenimiento</li>
+                            <li>Mejor rendimiento</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="info-bloque info-bloque-invertido">
+                    <figure class="marco-imagen">
+                        <!-- IMAGEN: tarjeta electrónica / controlador -->
+                        <img src="img/servicios-electronico.jpg" alt="Tarjeta electrónica de una máquina Airless" width="800" height="600">
+                    </figure>
+                    <div>
+                        <h3>Sistema electrónico</h3>
+                        <p>Los modelos Airless presentados cuentan con un sistema electrónico de fácil sustitución para garantizar el óptimo funcionamiento y producción de la maquinaria. La tarjeta está diseñada para una función específica y se reemplaza sin complicaciones.</p>
+                        <ul class="lista-beneficios">
+                            <li>Reemplazo rápido de la tarjeta</li>
+                            <li>Presión estable y constante</li>
+                            <li>Piezas en acero inoxidable</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- LLAMADO A LA ACCIÓN -->
+        <section class="seccion-llamado-accion" aria-labelledby="titulo-cta">
+            <div class="contenedor">
+                <h2 id="titulo-cta">¿Necesitas mantenimiento <span>preventivo</span>?</h2>
+                <p>Con GRUPO PARTES cuentas con 1 mantenimiento preventivo un mes después de realizar la compra de tu maquinaria Airless.</p>
+                <a href="contacto.html#formulario" class="btn-primario">Contáctanos hoy</a>
+            </div>
+        </section>
+
+    </main>
 
 </body>
 </html>

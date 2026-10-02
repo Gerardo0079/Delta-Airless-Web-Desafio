@@ -10,7 +10,9 @@
   --color-texto-blanco: #ffffff;
   --color-texto-gris: #b3b3b3;       
   --color-acento-naranja: #f39c12;   
-
+  --color-tarjeta: #252525;  /* fondo de tarjetas y formularios */
+  --color-borde: #3a3a3a;    /* bordes sutiles */
+   
   /* Tipografía (Alternativas comunes para web) */
   --fuente-titulos: 'Montserrat', 'Arial Black', sans-serif;
   --fuente-cuerpo: 'Roboto', 'Arial', sans-serif;
@@ -19,6 +21,11 @@
   --espacio-pequeno: 10px;
   --espacio-mediano: 20px;
   --espacio-grande: 40px;
+
+  /* Variables para tarjetas y bordes (servicios y contacto) */
+  --color-tarjeta: #252525;  /* fondo de tarjetas y formularios */
+  --color-borde: #3a3a3a;    /* bordes sutiles */
+  --radio-borde: 6px;        /* esquinas redondeadas */
 }
 
 /* ==========================================================================
@@ -46,6 +53,139 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* ==========================================================================
+--- 3.1 Estilos compartidos entre páginas internas (servicios y contacto) ---
+   Secciones, títulos, botones en fila, marcos de imagen y hero de página.
+   Los usan servicios.html y contacto.html, y cualquier otra página
+   puede reutilizarlos (hero, títulos, botones en fila, marcos de imagen). */
+
+/* --------------------------------------------------------------------------
+   SECCIONES DE PÁGINA
+   <section class="seccion-pagina"> separa cada bloque de contenido.
+   Se le puede sumar .seccion-fondo-gris para alternar el color de fondo.
+   -------------------------------------------------------------------------- */
+.seccion-pagina { padding: 60px 0; }
+.seccion-fondo-gris { background-color: var(--color-fondo-gris); }
+
+/* Se combina con .contenedor para limitar el ancho (ej. formulario y FAQ) */
+.contenedor-estrecho { max-width: 860px; }
+
+
+/* --------------------------------------------------------------------------
+   TÍTULO DE SECCIÓN
+   <h2 class="titulo-seccion">Texto <span>resaltado</span></h2>
+   El <span> se pinta de celeste.
+   -------------------------------------------------------------------------- */
+.titulo-seccion {
+    margin-bottom: var(--espacio-mediano);
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    overflow-wrap: normal; /* el body usa "anywhere" y parte las palabras */
+    hyphens: none;
+}
+.titulo-seccion span { color: var(--color-delta-celeste); }
+
+
+/* --------------------------------------------------------------------------
+   BOTONES EN FILA
+   Anula el margin-top de .btn-primario para que queden alineados.
+   -------------------------------------------------------------------------- */
+.grupo-botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--espacio-mediano); }
+.grupo-botones .btn-primario { margin-top: 0; }
+
+/* --------------------------------------------------------------------------
+   MARCO DE IMAGEN
+   <figure class="marco-imagen"><img ...></figure>
+   Reserva un espacio 4:3 aunque la imagen aún no exista.
+   -------------------------------------------------------------------------- */
+.marco-imagen {
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-fondo-gris);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+}
+.marco-imagen img { width: 100%; height: 100%; object-fit: cover; } /* recorta para llenar el marco */
+
+/* --------------------------------------------------------------------------
+   HERO DE PÁGINA
+   <section class="hero-pagina"> con .hero-contenido (texto + imagen).
+   Móvil: apilado. Escritorio (900px): dos columnas.
+   -------------------------------------------------------------------------- */
+.hero-pagina {
+    position: relative;
+    overflow: hidden; /* recorta la franja decorativa que sobresale */
+    padding: 50px 0;
+    background: linear-gradient(135deg, #111111 0%, var(--color-fondo-oscuro) 65%);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Franja diagonal decorativa de fondo (estilo catálogo) */
+.hero-pagina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -8%;
+    width: 22%;
+    height: 100%;
+    background-color: var(--color-delta-azul);
+    opacity: 0.35;
+    transform: skewX(-25deg);
+    pointer-events: none;
+}
+
+/* minmax(0, 1fr) deja que la columna se encoja sin empujar el texto */
+.hero-contenido {
+    position: relative;
+    z-index: 1; /* queda por encima de la franja decorativa */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    align-items: center;
+}
+
+/* Etiqueta pequeña sobre el título */
+.hero-etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-delta-celeste);
+    border: 1px solid var(--color-delta-celeste);
+    border-radius: 2px;
+}
+
+.hero-pagina h1 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 7vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.15;
+    overflow-wrap: normal; /* evita que "MANTENIMIENTO" se corte */
+    hyphens: none;
+}
+.hero-pagina h1 span { color: var(--color-delta-celeste); }
+
+.hero-descripcion {
+    max-width: 55ch;
+    margin-top: var(--espacio-mediano);
+    font-size: 1.05rem;
+    color: var(--color-texto-gris);
+}
+
+@media (min-width: 900px) {
+    .hero-pagina { padding: 80px 0; }
+    .hero-contenido { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 50px; }
+    .hero-pagina h1 { font-size: clamp(2rem, 3.6vw, 3rem); } /* columna más angosta = letra más chica */
 }
 
 
@@ -172,6 +312,230 @@ img {
 
 /* --- INTEGRANTE 3: SERVICIOS Y CONTACTO (servicios.html / contacto.html) --- */
 
+/* ======================= SERVICIOS (servicios.html) =======================
+/* --------------------------------------------------------------------------
+   1. RESPALDO  (<section class="seccion-respaldo">)
+   Cuatro tarjetas de texto centradas: título + descripción.
+   Móvil: 1 columna | 560px: 2 columnas | 1000px: 4 columnas
+   -------------------------------------------------------------------------- */
+.seccion-respaldo { padding: 40px 0; background-color: #151515; }
+
+.lista-respaldo { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+.tarjeta-respaldo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* centra el texto horizontalmente */
+    justify-content: center;  /* y verticalmente dentro de la tarjeta */
+    padding: 28px 18px;
+    text-align: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-bottom: 3px solid var(--color-delta-azul);
+    border-radius: var(--radio-borde);
+    transition: transform 0.3s ease, border-bottom-color 0.3s ease;
+}
+.tarjeta-respaldo:hover { transform: translateY(-4px); border-bottom-color: var(--color-delta-celeste); }
+
+.titulo-respaldo {
+    font-family: var(--fuente-titulos);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+}
+.texto-respaldo { max-width: 24ch; margin-top: 8px; font-size: 0.9rem; color: var(--color-texto-gris); }
+
+@media (min-width: 560px)  { .lista-respaldo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .lista-respaldo { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+
+/* --------------------------------------------------------------------------
+   2. FRECUENCIA DE MANTENIMIENTO  (<section id="frecuencia">)
+   Tarjetas Diario / Semanal / Mensual / Anual: siempre de dos en dos (2x2).
+   -------------------------------------------------------------------------- */
+.texto-introduccion { max-width: 62ch; margin-bottom: var(--espacio-grande); color: var(--color-texto-gris); }
+
+.grid-mantenimiento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+.tarjeta-mantenimiento {
+    padding: 18px 14px;
+    background-color: var(--color-tarjeta);
+    border-top: 4px solid var(--color-delta-celeste);
+    border-radius: var(--radio-borde);
+    transition: transform 0.3s ease;
+}
+.tarjeta-mantenimiento:hover { transform: translateY(-4px); }
+
+/* Número decorativo (01 a 04) */
+.numero-frecuencia {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-delta-azul);
+}
+.tarjeta-mantenimiento h3 { margin: 8px 0; font-family: var(--fuente-titulos); font-size: 1.05rem; text-transform: uppercase; }
+.tarjeta-mantenimiento p { font-size: 0.9rem; color: var(--color-texto-gris); }
+
+@media (min-width: 768px) {
+    .grid-mantenimiento { gap: var(--espacio-mediano); }
+    .tarjeta-mantenimiento { padding: 28px 24px; }
+    .numero-frecuencia { font-size: 2.4rem; }
+    .tarjeta-mantenimiento h3 { font-size: 1.25rem; }
+    .tarjeta-mantenimiento p { font-size: 1rem; }
+}
+
+
+/* --------------------------------------------------------------------------
+   3. INFORMACIÓN TÉCNICA  (<article class="info-bloque">)
+   Imagen + texto. Con .info-bloque-invertido la imagen pasa a la derecha.
+   Móvil: apilado | 900px: dos columnas
+   -------------------------------------------------------------------------- */
+.info-bloque { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; margin-top: var(--espacio-grande); }
+.info-bloque h3 {
+    margin-bottom: 10px;
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--color-delta-celeste);
+    overflow-wrap: normal;
+}
+.info-bloque p { color: var(--color-texto-gris); }
+
+/* Lista con viñeta ">" naranja: el símbolo se agrega con ::before en cada <li> */
+.lista-beneficios { list-style: none; margin-top: 16px; }
+.lista-beneficios li { position: relative; padding: 4px 0 4px 24px; }
+.lista-beneficios li::before {
+    content: ">";
+    position: absolute;
+    left: 4px;
+    font-weight: 700;
+    color: var(--color-acento-naranja);
+}
+
+@media (min-width: 900px) {
+    .info-bloque { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 50px; }
+    .info-bloque-invertido .marco-imagen { order: 2; } /* imagen a la derecha */
+}
+
+
+/* --------------------------------------------------------------------------
+   4. LLAMADO A LA ACCIÓN  (<section class="seccion-llamado-accion">)
+   Banda final con degradado azul y botón hacia contacto.html.
+   -------------------------------------------------------------------------- */
+.seccion-llamado-accion {
+    padding: 70px 0;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(10, 66, 170, 0.55), rgba(17, 17, 17, 0.95)), var(--color-fondo-gris);
+}
+.seccion-llamado-accion h2 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+}
+.seccion-llamado-accion h2 span { color: var(--color-delta-celeste); }
+.seccion-llamado-accion p { max-width: 60ch; margin: 14px auto 0; color: #dddddd; }
 
 
 
+
+/* ======================= CONTACTO (contacto.html) =========================
+   Orden igual que en la página: 1. Formulario  2. Preguntas frecuentes */
+
+/* --------------------------------------------------------------------------
+   1. FORMULARIO  (<form class="formulario-contacto">)
+   Tarjeta con grupos <fieldset>. La validación es solo HTML (sin JavaScript).
+   -------------------------------------------------------------------------- */
+.formulario-contacto {
+    padding: 28px 20px;
+    background-color: var(--color-tarjeta);
+    border-top: 4px solid var(--color-delta-celeste);
+    border-radius: var(--radio-borde);
+}
+
+/* Grupo de campos con borde y título (<fieldset><legend>) */
+.formulario-contacto fieldset {
+    min-width: 0; /* evita desbordes en móvil */
+    margin: 20px 0;
+    padding: 18px 16px 4px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+}
+.formulario-contacto legend {
+    padding: 0 10px;
+    font-family: var(--fuente-titulos);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--color-delta-celeste);
+}
+
+/* .fila-campos junta dos campos: apilados en móvil, lado a lado desde 600px */
+.fila-campos { display: grid; gap: 0 16px; }
+
+/* .campo-formulario = etiqueta + control, uno bajo el otro */
+.campo-formulario { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.campo-formulario label,
+.etiqueta-grupo-opciones { font-size: 0.9rem; font-weight: 500; }
+
+/* Controles de texto. Se excluyen radios y checkbox porque tienen su propio estilo */
+.formulario-contacto input:not([type="radio"]):not([type="checkbox"]),
+.formulario-contacto select,
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-texto-blanco);
+    background-color: var(--color-fondo-oscuro);
+    border: 1px solid #555555;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.formulario-contacto textarea { min-height: 120px; resize: vertical; }
+.formulario-contacto ::placeholder { color: #777777; }
+
+/* Foco con teclado: borde celeste */
+.formulario-contacto :focus-visible {
+    outline: none;
+    border-color: var(--color-delta-celeste);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+/* Validación nativa de HTML: rojo si el dato es incorrecto, verde si es correcto */
+.formulario-contacto :user-invalid { border-color: #e74c3c; }
+.formulario-contacto :user-valid { border-color: #2ecc71; }
+
+/* Radios y checkbox */
+.grupo-opciones { display: grid; gap: 10px; margin-top: 4px; }
+.opcion-seleccionable { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.opcion-seleccionable input { flex-shrink: 0; width: 18px; height: 18px; accent-color: var(--color-delta-celeste); }
+.opcion-consentimiento { align-items: flex-start; margin-bottom: var(--espacio-mediano); font-size: 0.9rem; color: var(--color-texto-gris); }
+
+.asterisco-obligatorio { color: var(--color-acento-naranja); } /* marca de campo requerido */
+.texto-ayuda { font-size: 0.85rem; color: var(--color-texto-gris); }
+
+/* Botones Enviar y Limpiar: se reparten el ancho de la fila */
+.formulario-contacto .grupo-botones > * { flex: 1 1 160px; text-align: center; }
+
+@media (min-width: 600px) {
+    .fila-campos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .formulario-contacto { padding: 36px 32px; }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. PREGUNTAS FRECUENTES  (<article class="pregunta-frecuente">)
+   Siempre visibles: pregunta (h3) y respuesta (p) una debajo de la otra.
+   -------------------------------------------------------------------------- */
+.pregunta-frecuente {
+    margin-bottom: 12px;
+    padding: 18px 20px;
+    background-color: var(--color-tarjeta);
+    border-left: 4px solid var(--color-delta-celeste);
+    border-radius: var(--radio-borde);
+}
+.pregunta-frecuente h3 { margin-bottom: 6px; font-size: 1.05rem; overflow-wrap: normal; }
+.pregunta-frecuente p { color: var(--color-texto-gris); }
