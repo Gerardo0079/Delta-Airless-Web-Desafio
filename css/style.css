@@ -1,80 +1,242 @@
 /* ==========================================================================
-   1. VARIABLES GLOBALES 
+   HOJA DE ESTILOS GLOBAL - DELTA AIRLESS
+   Índice:
+   1. Variables globales
+   2. Reset y estilos base
+   3. Estilos compartidos (contenedores, botones, header, footer, hero de página)
+   4. Página de inicio (index.html)
+   5. Página de productos (productos.html)
+   6. Página de servicios (servicios.html)
+   7. Página de contacto (contacto.html)
    ========================================================================== */
-:root {
-  /* Colores Corporativos  */
-  --color-delta-azul: #0a42aa;      
-  --color-delta-celeste: #3498db;    
-  --color-fondo-oscuro: #1c1c1c;     
-  --color-fondo-gris: #2d2d2d;       
-  --color-texto-blanco: #ffffff;
-  --color-texto-gris: #b3b3b3;       
-  --color-acento-naranja: #f39c12;   
-  --color-tarjeta: #252525;  /* fondo de tarjetas y formularios */
-  --color-borde: #3a3a3a;    /* bordes sutiles */
-   
-  /* Tipografía (Alternativas comunes para web) */
-  --fuente-titulos: 'Montserrat', 'Arial Black', sans-serif;
-  --fuente-cuerpo: 'Roboto', 'Arial', sans-serif;
 
-  
-  --espacio-pequeno: 10px;
-  --espacio-mediano: 20px;
-  --espacio-grande: 40px;
-
-  /* Variables para tarjetas y bordes (servicios y contacto) */
-  --color-tarjeta: #252525;  /* fondo de tarjetas y formularios */
-  --color-borde: #3a3a3a;    /* bordes sutiles */
-  --radio-borde: 6px;        /* esquinas redondeadas */
-}
 
 /* ==========================================================================
-   2. RESET Y ESTILOS BASE (Aplica a todas las páginas)
+   1. VARIABLES GLOBALES
+   ========================================================================== */
+:root {
+    /* Colores corporativos */
+    --color-delta-azul: #0a42aa;
+    --color-delta-celeste: #3498db;
+    --color-fondo-oscuro: #1c1c1c;
+    --color-fondo-gris: #2d2d2d;
+    --color-texto-blanco: #ffffff;
+    --color-texto-gris: #b3b3b3;
+    --color-acento-naranja: #f39c12;
+
+    /* Colores de tarjetas, formularios y bordes */
+    --color-tarjeta: #252525;
+    --color-borde: #3a3a3a;
+
+    /* Tipografía */
+    --fuente-titulos: 'Montserrat', 'Arial Black', sans-serif;
+    --fuente-cuerpo: 'Roboto', 'Arial', sans-serif;
+
+    /* Espaciados */
+    --espacio-pequeno: 10px;
+    --espacio-mediano: 20px;
+    --espacio-grande: 40px;
+
+    /* Esquinas redondeadas */
+    --radio-borde: 6px;
+}
+
+
+/* ==========================================================================
+   2. RESET Y ESTILOS BASE (aplican a todas las páginas)
    ========================================================================== */
 *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 iframe {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 body {
-  margin: 0;
-  overflow-wrap: anywhere;
-  font-family: var(--fuente-cuerpo);
-  background-color: var(--color-fondo-oscuro);
-  color: var(--color-texto-blanco);
-  line-height: 1.6;
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-blanco);
+    line-height: 1.6;
 }
+
 img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
+
 
 /* ==========================================================================
---- 3.1 Estilos compartidos entre páginas internas (servicios y contacto) ---
-   Secciones, títulos, botones en fila, marcos de imagen y hero de página.
-   Los usan servicios.html y contacto.html, y cualquier otra página
-   puede reutilizarlos (hero, títulos, botones en fila, marcos de imagen). */
+   3. ESTILOS COMPARTIDOS ENTRE PÁGINAS
+   ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   SECCIONES DE PÁGINA
-   <section class="seccion-pagina"> separa cada bloque de contenido.
-   Se le puede sumar .seccion-fondo-gris para alternar el color de fondo.
+   3.1 Contenedores y secciones
+   .contenedor centra y limita el ancho del contenido.
+   .contenedor-estrecho reduce ese ancho (formulario y preguntas frecuentes).
+   .seccion-pagina separa cada bloque; con .seccion-fondo-gris alterna el fondo.
    -------------------------------------------------------------------------- */
-.seccion-pagina { padding: 60px 0; }
-.seccion-fondo-gris { background-color: var(--color-fondo-gris); }
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-/* Se combina con .contenedor para limitar el ancho (ej. formulario y FAQ) */
-.contenedor-estrecho { max-width: 860px; }
+.contenedor-estrecho {
+    max-width: 860px;
+}
 
+.seccion-pagina {
+    padding: 60px 0;
+}
+
+.seccion-fondo-gris {
+    background-color: var(--color-fondo-gris);
+}
 
 /* --------------------------------------------------------------------------
-   TÍTULO DE SECCIÓN
+   3.2 Botones
+   .btn-primario y .btn-secundario son reutilizables en todas las páginas.
+   .grupo-botones los alinea en fila y anula el margin-top del botón primario.
+   -------------------------------------------------------------------------- */
+.btn-primario,
+.btn-secundario {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primario {
+    background-color: var(--color-delta-azul);
+    color: var(--color-texto-blanco);
+    margin-top: 20px;
+}
+
+.btn-primario:hover,
+.btn-primario:focus-visible {
+    background-color: var(--color-delta-celeste);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    border: 2px solid var(--color-delta-celeste);
+    color: var(--color-delta-celeste);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-delta-celeste);
+    color: var(--color-texto-blanco);
+}
+
+.grupo-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: var(--espacio-mediano);
+}
+
+.grupo-botones .btn-primario {
+    margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3.3 Encabezado y navegación (header)
+   Móvil primero: apilado. Desde 768px: logo a la izquierda y menú a la derecha.
+   -------------------------------------------------------------------------- */
+.header-principal {
+    background-color: #111111;
+    border-bottom: 2px solid var(--color-delta-azul);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-marca {
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-texto-blanco);
+    text-decoration: none;
+}
+
+.logo-marca span {
+    color: var(--color-delta-celeste);
+}
+
+/* Menú con Flexbox: los enlaces bajan de línea si no caben */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.nav-menu a {
+    color: var(--color-texto-blanco);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.activo {
+    color: var(--color-delta-celeste);
+    border-bottom: 2px solid var(--color-delta-celeste);
+}
+
+@media (min-width: 768px) {
+    .header-contenido {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3.4 Pie de página (footer)
+   -------------------------------------------------------------------------- */
+.footer-principal {
+    background-color: #111111;
+    border-top: 2px solid var(--color-delta-azul);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--color-texto-gris);
+    font-size: 0.9rem;
+}
+
+.footer-principal a {
+    color: var(--color-delta-celeste);
+    text-decoration: none;
+}
+
+.footer-principal a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   3.5 Título de sección
    <h2 class="titulo-seccion">Texto <span>resaltado</span></h2>
    El <span> se pinta de celeste.
    -------------------------------------------------------------------------- */
@@ -88,20 +250,15 @@ img {
     overflow-wrap: normal; /* el body usa "anywhere" y parte las palabras */
     hyphens: none;
 }
-.titulo-seccion span { color: var(--color-delta-celeste); }
 
-
-/* --------------------------------------------------------------------------
-   BOTONES EN FILA
-   Anula el margin-top de .btn-primario para que queden alineados.
-   -------------------------------------------------------------------------- */
-.grupo-botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--espacio-mediano); }
-.grupo-botones .btn-primario { margin-top: 0; }
+.titulo-seccion span {
+    color: var(--color-delta-celeste);
+}
 
 /* --------------------------------------------------------------------------
-   MARCO DE IMAGEN
+   3.6 Marco de imagen
    <figure class="marco-imagen"><img ...></figure>
-   Reserva un espacio 4:3 aunque la imagen aún no exista.
+   Mantiene una proporción 4:3 y recorta la imagen para llenar el marco.
    -------------------------------------------------------------------------- */
 .marco-imagen {
     margin: 0;
@@ -111,27 +268,27 @@ img {
     border: 1px solid var(--color-borde);
     border-radius: var(--radio-borde);
 }
-.marco-imagen img { width: 100%; height: 100%; object-fit: cover; } /* recorta para llenar el marco */
 
-/* --------------------------------------------------------------------------
-   HERO DE PÁGINA
-   <section class="hero-pagina"> con .hero-contenido (texto + imagen).
-   Móvil: apilado. Escritorio (900px): dos columnas.
-   -------------------------------------------------------------------------- */
-.hero-pagina {
-    position: relative;
-    overflow: hidden; /* recorta la franja decorativa que sobresale */
-    padding: 50px 0;
-    background: linear-gradient(135deg, #111111 0%, var(--color-fondo-oscuro) 65%);
-    border-bottom: 1px solid var(--color-borde);
+.marco-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
+/* --------------------------------------------------------------------------
+   3.7 Hero de página (servicios y contacto)
+   <section class="hero-pagina"> con .hero-contenido (bloque de texto).
+   Móvil: apilado. Escritorio (900px): más espacio vertical y título mayor.
+   -------------------------------------------------------------------------- */
+.hero-pagina {
+    padding: 50px 0;
+    background: linear-gradient(135deg, var(--color-fondo-oscuro) 0%, #0a1f4d 100%); /* mismo degradado del inicio y productos */
+}
 
-
-/* minmax(0, 1fr) deja que la columna se encoja sin empujar el texto */
+/* minmax(0, 1fr) permite que la columna se encoja sin desbordar el texto */
 .hero-pagina .hero-contenido {
     position: relative;
-    z-index: 1; /* queda por encima de la franja decorativa */
+    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 30px;
@@ -158,10 +315,13 @@ img {
     font-weight: 800;
     text-transform: uppercase;
     line-height: 1.15;
-    overflow-wrap: normal; /* evita que "MANTENIMIENTO" se corte */
+    overflow-wrap: normal; /* evita que palabras largas como "MANTENIMIENTO" se corten */
     hyphens: none;
 }
-.hero-pagina h1 span { color: var(--color-delta-celeste); }
+
+.hero-pagina h1 span {
+    color: var(--color-delta-celeste);
+}
 
 .hero-descripcion {
     max-width: 55ch;
@@ -171,307 +331,357 @@ img {
 }
 
 @media (min-width: 900px) {
-    .hero-pagina { padding: 80px 0; }
-    .hero-contenido { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 50px; }
-    .hero-pagina h1 { font-size: clamp(2rem, 3.6vw, 3rem); } /* columna más angosta = letra más chica */
-}
+    .hero-pagina {
+        padding: 80px 0;
+    }
 
-
-/* ==========================================================================
-   3. ESTILOS COMPARTIDOS (Header, Footer, Navegación)
-   ========================================================================== */
-/* Aquí va el código del menú de navegación que usarán todas las páginas */
-
-/* Contenedor central fluido */
-.contenedor {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Botones Reutilizables */
-.btn-primario, .btn-secundario {
-    display: inline-block;
-    padding: 12px 24px;
-    font-family: var(--fuente-titulos);
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-primario {
-    background-color: var(--color-delta-azul);
-    color: var(--color-texto-blanco);
-    margin-top: 20px;
-}
-
-.btn-primario:hover, .btn-primario:focus-visible {
-    background-color: var(--color-delta-celeste);
-}
-
-.btn-secundario {
-    background-color: transparent;
-    border: 2px solid var(--color-delta-celeste);
-    color: var(--color-delta-celeste);
-}
-
-.btn-secundario:hover {
-    background-color: var(--color-delta-celeste);
-    color: var(--color-texto-blanco);
-}
-
-
-/* 1. Reglas base (Móvil primero) */
-.header-principal {
-    background-color: #111111;
-    border-bottom: 2px solid var(--color-delta-azul);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-contenido {
-    display: flex;
-    flex-direction: column; /* Apilado en móviles */
-    align-items: center;
-    gap: 15px;
-}
-
-
-@media (min-width: 768px) {
-    /* Header horizontal en pantallas grandes */
-    .header-contenido {
-        flex-direction: row;
-        justify-content: space-between;
+    .hero-pagina h1 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
     }
 }
 
 
-.logo-marca {
-    font-family: var(--fuente-titulos);
-    font-size: 1.5rem;
-    color: var(--color-texto-blanco);
-    text-decoration: none;
-    font-weight: 700;
+/* ==========================================================================
+   4. PÁGINA DE INICIO (index.html)
+   Todos los selectores usan el prefijo .inicio (clase del <body>).
+   ========================================================================== */
+
+/* --- 4.1 Hero --- */
+.inicio .hero {
+    background: linear-gradient(135deg, var(--color-fondo-oscuro) 0%, #0a1f4d 100%);
+    padding: 80px 0;
 }
 
-.logo-marca span {
+.inicio .hero-contenido {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-grande);
+    align-items: center;
+}
+
+.inicio .hero-texto {
+    text-align: left;
+}
+
+.inicio .hero-etiqueta {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-acento-naranja);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: var(--espacio-pequeno);
+}
+
+.inicio .hero h1 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: var(--espacio-mediano);
+}
+
+.inicio .hero h1 span {
     color: var(--color-delta-celeste);
 }
 
-/* Flexbox para la barra de navegación */
-.nav-menu {
-    list-style: none;
+.inicio .hero p {
+    color: var(--color-texto-gris);
+    font-size: 1.1rem;
+    max-width: 560px;
+}
+
+.inicio .hero-botones {
     display: flex;
-    flex-wrap: wrap; /* Permite que los enlaces bajen de línea si no caben */
+    flex-wrap: wrap;
     gap: 15px;
+    margin-top: var(--espacio-mediano);
+}
+
+.inicio .hero-botones .btn-primario {
+    margin-top: 0;
+}
+
+.inicio .hero-imagen {
+    width: 100%;
+}
+
+.inicio .hero-imagen img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--color-delta-azul);
+}
+
+/* --- 4.2 Estadísticas --- */
+.inicio .estadisticas {
+    background-color: var(--color-delta-azul);
+    padding: 40px 0;
+}
+
+.inicio .grid-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-mediano);
+    text-align: center;
+}
+
+.inicio .stat strong {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+}
+
+.inicio .stat span {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* --- 4.3 Secciones genéricas y títulos --- */
+.inicio .seccion {
+    padding: 70px 0;
+}
+
+.inicio .seccion-gris {
+    background-color: var(--color-fondo-gris);
+}
+
+.inicio .seccion-titulo {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.inicio .seccion-subtitulo {
+    text-align: center;
+    color: var(--color-texto-gris);
+    max-width: 620px;
+    margin: 0 auto var(--espacio-grande);
+}
+
+.inicio .centrar {
+    text-align: center;
+    margin-top: var(--espacio-grande);
+}
+
+/* --- 4.4 Tarjetas de ventajas --- */
+.inicio .grid-tarjetas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-mediano);
+}
+
+.inicio .tarjeta {
+    background-color: var(--color-fondo-oscuro);
+    border: 1px solid var(--color-borde);
+    border-top: 3px solid var(--color-delta-azul);
+    border-radius: 6px;
+    padding: 28px 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.inicio .tarjeta:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--color-delta-celeste);
+}
+
+.inicio .tarjeta .icono {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.inicio .tarjeta h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.inicio .tarjeta p {
+    color: var(--color-texto-gris);
+    font-size: 0.95rem;
+}
+
+/* --- 4.5 Pasos (lista ordenada con contador CSS) --- */
+.inicio .pasos {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-mediano);
+    counter-reset: paso;
+}
+
+.inicio .pasos li {
+    counter-increment: paso;
+    background-color: var(--color-fondo-gris);
+    border-radius: 6px;
+    padding: 24px;
+    position: relative;
+}
+
+.inicio .pasos li::before {
+    content: counter(paso);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: var(--color-delta-celeste);
+    border-radius: 50%;
+    font-family: var(--fuente-titulos);
+    margin-bottom: 10px;
+}
+
+.inicio .pasos h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.inicio .pasos p {
+    color: var(--color-texto-gris);
+    font-size: 0.95rem;
+}
+
+/* --- 4.6 Videos de Instagram --- */
+.inicio .grid-videos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.inicio .grid-videos .video-card {
+    min-width: 0;
+}
+
+.inicio .video-card {
+    background-color: var(--color-fondo-gris);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
     justify-content: center;
 }
 
-.nav-menu a {
-    color: var(--color-texto-blanco);
-    text-decoration: none;
-    font-size: 0.95rem;
-    padding: 5px 10px;
-    transition: color 0.3s;
+.inicio .video-card iframe {
+    width: 100%;
+    height: 620px;
+    border: 0;
 }
 
-.nav-menu a:hover, .nav-menu a.activo {
+/* --- 4.7 Testimonios --- */
+.inicio .grid-testimonios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espacio-mediano);
+}
+
+.inicio .testimonio {
+    background-color: var(--color-fondo-oscuro);
+    border-left: 4px solid var(--color-acento-naranja);
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.inicio .testimonio .estrellas {
+    color: var(--color-acento-naranja);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.inicio .testimonio p {
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.inicio .testimonio cite {
     color: var(--color-delta-celeste);
-    border-bottom: 2px solid var(--color-delta-celeste);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
+/* --- 4.8 Llamada a la acción final --- */
+.inicio .cta-final {
+    text-align: center;
+    background: linear-gradient(135deg, #0a1f4d, var(--color-delta-azul));
+    padding: 70px 0;
+}
+
+.inicio .cta-final h2 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    margin-bottom: 12px;
+}
+
+.inicio .cta-final p {
+    max-width: 560px;
+    margin: 0 auto 10px;
+    opacity: 0.9;
+}
+
+/* --- 4.9 Adaptación a escritorio (768px) --- */
+@media (min-width: 768px) {
+    .inicio .hero-contenido {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .inicio .grid-tarjetas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .inicio .grid-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .inicio .pasos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .inicio .grid-videos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 
 
 /* ==========================================================================
-   4. ESTILOS ESPECÍFICOS POR PÁGINA 
+   5. PÁGINA DE PRODUCTOS (productos.html)
    ========================================================================== */
 
-/* --- INTEGRANTE 1: INICIO (index.html) --- */
-.inicio .hero {background: linear-gradient(135deg, var(--color-fondo-oscuro) 0%, #0a1f4d 100%);
-            padding: 80px 0;}
-.inicio .hero-contenido {display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--espacio-grande);
-            align-items: center;}
-.inicio .hero-etiqueta {display: inline-block;
-            color: var(--color-acento-naranja);
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-bottom: var(--espacio-pequeno);}
-.inicio .hero h1 {font-family: var(--fuente-titulos);
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            line-height: 1.15;
-            margin-bottom: var(--espacio-mediano);}
-.inicio .hero h1 span {color: var(--color-delta-celeste);}
-.inicio .hero p {color: var(--color-texto-gris);
-            font-size: 1.1rem;
-            max-width: 560px;}
-.inicio .hero-botones {display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: var(--espacio-mediano);}
-.inicio .hero-botones .btn-primario {margin-top: 0;}
-.inicio .hero-imagen img {border-radius: 8px;
-            border: 2px solid var(--color-delta-azul);
-            width: 100%;
-            object-fit: cover;}
-.inicio .seccion {padding: 70px 0;}
-.inicio .seccion-gris {background-color: var(--color-fondo-gris);}
-.inicio .seccion-titulo {font-family: var(--fuente-titulos);
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-            text-align: center;
-            margin-bottom: 10px;}
-.inicio .seccion-subtitulo {text-align: center;
-            color: var(--color-texto-gris);
-            max-width: 620px;
-            margin: 0 auto var(--espacio-grande);}
-.inicio .grid-tarjetas {display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--espacio-mediano);}
-.inicio .tarjeta {background-color: var(--color-fondo-oscuro);
-            border: 1px solid #3a3a3a;
-            border-top: 3px solid var(--color-delta-azul);
-            border-radius: 6px;
-            padding: 28px 24px;
-            transition: transform 0.3s ease, border-color 0.3s ease;}
-.inicio .tarjeta:hover {transform: translateY(-5px);
-            border-top-color: var(--color-delta-celeste);}
-.inicio .tarjeta .icono {font-size: 2rem; margin-bottom: 12px;}
-.inicio .tarjeta h3 {font-family: var(--fuente-titulos);
-            font-size: 1.1rem;
-            margin-bottom: 8px;}
-.inicio .tarjeta p {color: var(--color-texto-gris); font-size: 0.95rem;}
-.inicio .estadisticas {background-color: var(--color-delta-azul);
-            padding: 40px 0;}
-.inicio .grid-stats {display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--espacio-mediano);
-            text-align: center;}
-.inicio .stat strong {display: block;
-            font-family: var(--fuente-titulos);
-            font-size: 1.8rem;}
-.inicio .stat span {font-size: 0.9rem; opacity: 0.9;}
-.inicio .pasos {list-style: none;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--espacio-mediano);
-            counter-reset: paso;}
-.inicio .pasos li {counter-increment: paso;
-            background-color: var(--color-fondo-gris);
-            border-radius: 6px;
-            padding: 24px;
-            position: relative;}
-.inicio .pasos li::before {content: counter(paso);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px; height: 34px;
-            background-color: var(--color-delta-celeste);
-            border-radius: 50%;
-            font-family: var(--fuente-titulos);
-            margin-bottom: 10px;}
-.inicio .pasos h3 {font-family: var(--fuente-titulos); font-size: 1.05rem; margin-bottom: 6px;}
-.inicio .pasos p {color: var(--color-texto-gris); font-size: 0.95rem;}
-.inicio .centrar {text-align: center; margin-top: var(--espacio-grande);}
-.inicio .grid-videos, .inicio .grid-testimonios {display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--espacio-mediano);}
-.inicio .video-card {background-color: var(--color-fondo-gris);
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;}
-.inicio .video-card iframe {width: 100%; height: 620px; border: 0;}
-.inicio .testimonio {background-color: var(--color-fondo-oscuro);
-            border-left: 4px solid var(--color-acento-naranja);
-            border-radius: 6px;
-            padding: 24px;}
-.inicio .testimonio .estrellas {color: var(--color-acento-naranja); letter-spacing: 2px; margin-bottom: 8px;}
-.inicio .testimonio p {font-style: italic; margin-bottom: 12px;}
-.inicio .testimonio cite {color: var(--color-delta-celeste); font-style: normal; font-weight: 500; font-size: 0.9rem;}
-.inicio .cta-final {text-align: center;
-            background: linear-gradient(135deg, #0a1f4d, var(--color-delta-azul));
-            padding: 70px 0;}
-.inicio .cta-final h2 {font-family: var(--fuente-titulos);
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-            margin-bottom: 12px;}
-.inicio .cta-final p {max-width: 560px; margin: 0 auto 10px; opacity: 0.9;}
-.footer-principal {background-color: #111111;
-            border-top: 2px solid var(--color-delta-azul);
-            padding: 30px 0;
-            text-align: center;
-            color: var(--color-texto-gris);
-            font-size: 0.9rem;}
-.footer-principal a {color: var(--color-delta-celeste); text-decoration: none;}
-.footer-principal a:hover {text-decoration: underline;}
-@media (min-width: 768px) {
-.inicio .hero-contenido {grid-template-columns: 1.1fr 0.9fr;}
-.inicio .grid-tarjetas {grid-template-columns: repeat(3, 1fr);}
-.inicio .grid-stats {grid-template-columns: repeat(4, 1fr);}
-.inicio .pasos {grid-template-columns: repeat(3, 1fr);}
-}
-.inicio .grid-videos {display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            align-items: start;}
-@media (min-width: 768px) {
-.inicio .grid-videos {grid-template-columns: repeat(2, minmax(0, 1fr));}
-}
-.inicio .grid-videos .video-card {min-width: 0;}
-.inicio .contenedor { width: 90%; max-width: 1200px; margin: 0 auto; }
-.inicio .header-principal { background-color: #111111; border-bottom: 2px solid var(--color-delta-azul); padding: 15px 0; position: sticky; top: 0; z-index: 100; }
-.inicio .header-contenido { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-.inicio .logo-marca { font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 700; color: var(--color-texto-blanco); text-decoration: none; }
-.inicio .logo-marca span { color: var(--color-delta-celeste); }
-.inicio .nav-menu { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-.inicio .nav-menu a { color: var(--color-texto-blanco); text-decoration: none; font-size: 0.95rem; padding: 5px 10px; border-bottom: 2px solid transparent; }
-.inicio .nav-menu a:hover, .inicio .nav-menu a.activo { color: var(--color-delta-celeste); border-bottom: 2px solid var(--color-delta-celeste); }
-.inicio .hero-texto { text-align: left; }
-.inicio .hero-etiqueta { border: 0; padding: 0; background: none; }
-.inicio .hero-imagen { width: 100%; }
-.inicio .hero-imagen img { width: 100%; height: auto; max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
-@media (min-width: 768px) {
-.inicio .header-contenido { flex-direction: row; justify-content: space-between; }
-.inicio .hero-contenido { grid-template-columns: 1.1fr 0.9fr; }
-}
-
-/* --- INTEGRANTE 2: PRODUCTOS (productos.html) --- */
+/* --- 5.1 Hero de introducción --- */
 .hero {
     background: linear-gradient(135deg, var(--color-fondo-oscuro) 0%, #0a1f4d 100%);
     padding: 80px 0;
-    text-align: center; /* Centra todo el texto por defecto */
+    text-align: center;
 }
 
 .hero .contenedor {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra los bloques hijos horizontalmente */
+    align-items: center;
     text-align: center;
 }
 
-.hero h2 {
+.hero-productos h1 {
     font-family: var(--fuente-titulos);
     font-size: clamp(2rem, 4.5vw, 3rem);
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
-    max-width: 900px; 
+    max-width: 900px;
     color: var(--color-texto-blanco);
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Esta línea pinta de azul la parte que metiste dentro del span */
-.hero h2 span {
+/* El <span> del título se pinta de celeste */
+.hero-productos h1 span {
     color: var(--color-delta-celeste);
 }
 
@@ -483,6 +693,8 @@ img {
     line-height: 1.6;
     text-align: center;
 }
+
+/* --- 5.2 Catálogo de productos --- */
 #catalogo {
     padding: 60px 0;
 }
@@ -551,10 +763,11 @@ img {
     margin-top: auto;
 }
 
+/* Altura fija para que todas las tarjetas tengan la misma medida */
 .imagen-producto {
     width: 100%;
-    height: 200px; /* Altura fija para que todas las tarjetas midan lo mismo */
-    background-color: #1a1a1a; /* Fondo oscuro de respaldo */
+    height: 200px;
+    background-color: #1a1a1a;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 16px;
@@ -564,19 +777,20 @@ img {
     border: 1px solid var(--color-borde);
 }
 
+/* object-fit: contain mantiene la proporción de la máquina sin recortarla */
 .imagen-producto img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mantiene la proporción de la máquina sin recortarla (puedes usar 'cover' si prefieres que llene todo el espacio) */
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
-/* Efecto de zoom sutil al pasar el mouse sobre la tarjeta */
+/* Zoom sutil al pasar el cursor sobre la tarjeta */
 .card-producto:hover .imagen-producto img {
     transform: scale(1.05);
 }
 
-/* Sección Ventajas en la página de productos */
+/* --- 5.3 Ventajas de las máquinas --- */
 #ventajas {
     background-color: var(--color-fondo-gris);
     border: 1px solid var(--color-borde);
@@ -585,7 +799,7 @@ img {
     margin: 40px auto;
 }
 
-#ventajas h3 {
+#ventajas h2 {
     font-family: var(--fuente-titulos);
     font-size: 1.5rem;
     color: var(--color-texto-blanco);
@@ -606,23 +820,33 @@ img {
     color: var(--color-texto-gris);
 }
 
-/* --- INTEGRANTE 3: SERVICIOS Y CONTACTO (servicios.html / contacto.html) --- */
 
-/* ======================= SERVICIOS (servicios.html) =======================
+/* ==========================================================================
+   6. PÁGINA DE SERVICIOS (servicios.html)
+   ========================================================================== */
+
 /* --------------------------------------------------------------------------
-   1. RESPALDO  (<section class="seccion-respaldo">)
-   Cuatro tarjetas de texto centradas: título + descripción.
+   6.1 Respaldo (<section class="seccion-respaldo">)
+   Cuatro tarjetas centradas con ícono, título y descripción.
    Móvil: 1 columna | 560px: 2 columnas | 1000px: 4 columnas
    -------------------------------------------------------------------------- */
-.seccion-respaldo { padding: 40px 0; background-color: #151515; }
+.seccion-respaldo {
+    padding: 40px 0;
+    background-color: #151515;
+}
 
-.lista-respaldo { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.lista-respaldo {
+    list-style: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+}
 
 .tarjeta-respaldo {
     display: flex;
     flex-direction: column;
-    align-items: center;      /* centra el texto horizontalmente */
-    justify-content: center;  /* y verticalmente dentro de la tarjeta */
+    align-items: center;
+    justify-content: center;
     padding: 28px 18px;
     text-align: center;
     background-color: var(--color-tarjeta);
@@ -631,7 +855,11 @@ img {
     border-radius: var(--radio-borde);
     transition: transform 0.3s ease, border-bottom-color 0.3s ease;
 }
-.tarjeta-respaldo:hover { transform: translateY(-4px); border-bottom-color: var(--color-delta-celeste); }
+
+.tarjeta-respaldo:hover {
+    transform: translateY(-4px);
+    border-bottom-color: var(--color-delta-celeste);
+}
 
 .titulo-respaldo {
     font-family: var(--fuente-titulos);
@@ -639,19 +867,41 @@ img {
     text-transform: uppercase;
     overflow-wrap: normal;
 }
-.texto-respaldo { max-width: 24ch; margin-top: 8px; font-size: 0.9rem; color: var(--color-texto-gris); }
 
-@media (min-width: 560px)  { .lista-respaldo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1000px) { .lista-respaldo { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.texto-respaldo {
+    max-width: 24ch;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--color-texto-gris);
+}
 
+@media (min-width: 560px) {
+    .lista-respaldo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1000px) {
+    .lista-respaldo {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
 
 /* --------------------------------------------------------------------------
-   2. FRECUENCIA DE MANTENIMIENTO  (<section id="frecuencia">)
+   6.2 Frecuencia de mantenimiento (<section id="frecuencia">)
    Tarjetas Diario / Semanal / Mensual / Anual: siempre de dos en dos (2x2).
    -------------------------------------------------------------------------- */
-.texto-introduccion { max-width: 62ch; margin-bottom: var(--espacio-grande); color: var(--color-texto-gris); }
+.texto-introduccion {
+    max-width: 62ch;
+    margin-bottom: var(--espacio-grande);
+    color: var(--color-texto-gris);
+}
 
-.grid-mantenimiento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid-mantenimiento {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
 
 .tarjeta-mantenimiento {
     padding: 18px 14px;
@@ -660,9 +910,12 @@ img {
     border-radius: var(--radio-borde);
     transition: transform 0.3s ease;
 }
-.tarjeta-mantenimiento:hover { transform: translateY(-4px); }
 
-/* Número decorativo (01 a 04) */
+.tarjeta-mantenimiento:hover {
+    transform: translateY(-4px);
+}
+
+/* Número decorativo de cada frecuencia (01 a 04) */
 .numero-frecuencia {
     display: block;
     font-family: var(--fuente-titulos);
@@ -671,24 +924,54 @@ img {
     line-height: 1;
     color: var(--color-delta-azul);
 }
-.tarjeta-mantenimiento h3 { margin: 8px 0; font-family: var(--fuente-titulos); font-size: 1.05rem; text-transform: uppercase; }
-.tarjeta-mantenimiento p { font-size: 0.9rem; color: var(--color-texto-gris); }
 
-@media (min-width: 768px) {
-    .grid-mantenimiento { gap: var(--espacio-mediano); }
-    .tarjeta-mantenimiento { padding: 28px 24px; }
-    .numero-frecuencia { font-size: 2.4rem; }
-    .tarjeta-mantenimiento h3 { font-size: 1.25rem; }
-    .tarjeta-mantenimiento p { font-size: 1rem; }
+.tarjeta-mantenimiento h3 {
+    margin: 8px 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.05rem;
+    text-transform: uppercase;
 }
 
+.tarjeta-mantenimiento p {
+    font-size: 0.9rem;
+    color: var(--color-texto-gris);
+}
+
+@media (min-width: 768px) {
+    .grid-mantenimiento {
+        gap: var(--espacio-mediano);
+    }
+
+    .tarjeta-mantenimiento {
+        padding: 28px 24px;
+    }
+
+    .numero-frecuencia {
+        font-size: 2.4rem;
+    }
+
+    .tarjeta-mantenimiento h3 {
+        font-size: 1.25rem;
+    }
+
+    .tarjeta-mantenimiento p {
+        font-size: 1rem;
+    }
+}
 
 /* --------------------------------------------------------------------------
-   3. INFORMACIÓN TÉCNICA  (<article class="info-bloque">)
+   6.3 Información técnica (<article class="info-bloque">)
    Imagen + texto. Con .info-bloque-invertido la imagen pasa a la derecha.
    Móvil: apilado | 900px: dos columnas
    -------------------------------------------------------------------------- */
-.info-bloque { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; margin-top: var(--espacio-grande); }
+.info-bloque {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    margin-top: var(--espacio-grande);
+}
+
 .info-bloque h3 {
     margin-bottom: 10px;
     font-family: var(--fuente-titulos);
@@ -697,11 +980,22 @@ img {
     color: var(--color-delta-celeste);
     overflow-wrap: normal;
 }
-.info-bloque p { color: var(--color-texto-gris); }
+
+.info-bloque p {
+    color: var(--color-texto-gris);
+}
 
 /* Lista con viñeta ">" naranja: el símbolo se agrega con ::before en cada <li> */
-.lista-beneficios { list-style: none; margin-top: 16px; }
-.lista-beneficios li { position: relative; padding: 4px 0 4px 24px; }
+.lista-beneficios {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.lista-beneficios li {
+    position: relative;
+    padding: 4px 0 4px 24px;
+}
+
 .lista-beneficios li::before {
     content: ">";
     position: absolute;
@@ -711,20 +1005,27 @@ img {
 }
 
 @media (min-width: 900px) {
-    .info-bloque { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 50px; }
-    .info-bloque-invertido .marco-imagen { order: 2; } /* imagen a la derecha */
+    .info-bloque {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 50px;
+    }
+
+    /* Imagen a la derecha */
+    .info-bloque-invertido .marco-imagen {
+        order: 2;
+    }
 }
 
-
 /* --------------------------------------------------------------------------
-   4. LLAMADO A LA ACCIÓN  (<section class="seccion-llamado-accion">)
+   6.4 Llamado a la acción (<section class="seccion-llamado-accion">)
    Banda final con degradado azul y botón hacia contacto.html.
    -------------------------------------------------------------------------- */
 .seccion-llamado-accion {
     padding: 70px 0;
     text-align: center;
-    background: linear-gradient(135deg, rgba(10, 66, 170, 0.55), rgba(17, 17, 17, 0.95)), var(--color-fondo-gris);
+    background: linear-gradient(135deg, #0a1f4d, var(--color-delta-azul)); /* igual que .cta-final del inicio */
 }
+
 .seccion-llamado-accion h2 {
     font-family: var(--fuente-titulos);
     font-size: clamp(1.5rem, 5vw, 2.4rem);
@@ -732,17 +1033,25 @@ img {
     text-transform: uppercase;
     overflow-wrap: normal;
 }
-.seccion-llamado-accion h2 span { color: var(--color-delta-celeste); }
-.seccion-llamado-accion p { max-width: 60ch; margin: 14px auto 0; color: #dddddd; }
+
+.seccion-llamado-accion h2 span {
+    color: var(--color-delta-celeste);
+}
+
+.seccion-llamado-accion p {
+    max-width: 60ch;
+    margin: 14px auto 0;
+    color: #dddddd;
+}
 
 
-
-
-/* ======================= CONTACTO (contacto.html) =========================
-   Orden igual que en la página: 1. Formulario  2. Preguntas frecuentes */
+/* ==========================================================================
+   7. PÁGINA DE CONTACTO (contacto.html)
+   Orden igual que en la página: 7.1 Formulario | 7.2 Preguntas frecuentes
+   ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. FORMULARIO  (<form class="formulario-contacto">)
+   7.1 Formulario (<form class="formulario-contacto">)
    Tarjeta con grupos <fieldset>. La validación es solo HTML (sin JavaScript).
    -------------------------------------------------------------------------- */
 .formulario-contacto {
@@ -760,6 +1069,7 @@ img {
     border: 1px solid var(--color-borde);
     border-radius: 4px;
 }
+
 .formulario-contacto legend {
     padding: 0 10px;
     font-family: var(--fuente-titulos);
@@ -769,12 +1079,24 @@ img {
 }
 
 /* .fila-campos junta dos campos: apilados en móvil, lado a lado desde 600px */
-.fila-campos { display: grid; gap: 0 16px; }
+.fila-campos {
+    display: grid;
+    gap: 0 16px;
+}
 
 /* .campo-formulario = etiqueta + control, uno bajo el otro */
-.campo-formulario { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
 .campo-formulario label,
-.etiqueta-grupo-opciones { font-size: 0.9rem; font-weight: 500; }
+.etiqueta-grupo-opciones {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
 
 /* Controles de texto. Se excluyen radios y checkbox porque tienen su propio estilo */
 .formulario-contacto input:not([type="radio"]):not([type="checkbox"]),
@@ -790,8 +1112,15 @@ img {
     border-radius: 4px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.formulario-contacto textarea { min-height: 120px; resize: vertical; }
-.formulario-contacto ::placeholder { color: #777777; }
+
+.formulario-contacto textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.formulario-contacto ::placeholder {
+    color: #777777;
+}
 
 /* Foco con teclado: borde celeste */
 .formulario-contacto :focus-visible {
@@ -801,29 +1130,70 @@ img {
 }
 
 /* Validación nativa de HTML: rojo si el dato es incorrecto, verde si es correcto */
-.formulario-contacto :user-invalid { border-color: #e74c3c; }
-.formulario-contacto :user-valid { border-color: #2ecc71; }
-
-/* Radios y checkbox */
-.grupo-opciones { display: grid; gap: 10px; margin-top: 4px; }
-.opcion-seleccionable { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-.opcion-seleccionable input { flex-shrink: 0; width: 18px; height: 18px; accent-color: var(--color-delta-celeste); }
-.opcion-consentimiento { align-items: flex-start; margin-bottom: var(--espacio-mediano); font-size: 0.9rem; color: var(--color-texto-gris); }
-
-.asterisco-obligatorio { color: var(--color-acento-naranja); } /* marca de campo requerido */
-.texto-ayuda { font-size: 0.85rem; color: var(--color-texto-gris); }
-
-/* Botones Enviar y Limpiar: se reparten el ancho de la fila */
-.formulario-contacto .grupo-botones > * { flex: 1 1 160px; text-align: center; }
-
-@media (min-width: 600px) {
-    .fila-campos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .formulario-contacto { padding: 36px 32px; }
+.formulario-contacto :user-invalid {
+    border-color: #e74c3c;
 }
 
+.formulario-contacto :user-valid {
+    border-color: #2ecc71;
+}
+
+/* Radios y checkbox */
+.grupo-opciones {
+    display: grid;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.opcion-seleccionable {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.opcion-seleccionable input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-delta-celeste);
+}
+
+.opcion-consentimiento {
+    align-items: flex-start;
+    margin-bottom: var(--espacio-mediano);
+    font-size: 0.9rem;
+    color: var(--color-texto-gris);
+}
+
+/* Marca de campo obligatorio */
+.asterisco-obligatorio {
+    color: var(--color-acento-naranja);
+}
+
+.texto-ayuda {
+    font-size: 0.85rem;
+    color: var(--color-texto-gris);
+}
+
+/* Botones Enviar y Limpiar: se reparten el ancho de la fila */
+.formulario-contacto .grupo-botones > * {
+    flex: 1 1 160px;
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .fila-campos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .formulario-contacto {
+        padding: 36px 32px;
+    }
+}
 
 /* --------------------------------------------------------------------------
-   2. PREGUNTAS FRECUENTES  (<article class="pregunta-frecuente">)
+   7.2 Preguntas frecuentes (<article class="pregunta-frecuente">)
    Siempre visibles: pregunta (h3) y respuesta (p) una debajo de la otra.
    -------------------------------------------------------------------------- */
 .pregunta-frecuente {
@@ -833,5 +1203,36 @@ img {
     border-left: 4px solid var(--color-delta-celeste);
     border-radius: var(--radio-borde);
 }
-.pregunta-frecuente h3 { margin-bottom: 6px; font-size: 1.05rem; overflow-wrap: normal; }
-.pregunta-frecuente p { color: var(--color-texto-gris); }
+
+.pregunta-frecuente h3 {
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+    overflow-wrap: normal;
+}
+
+.pregunta-frecuente p {
+    color: var(--color-texto-gris);
+}
+/* Anula las reglas de .hero de la sección 5 solo en inicio */
+.inicio .hero {
+    text-align: left;
+}
+
+.inicio .hero .hero-contenido {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    text-align: left;
+}
+
+.inicio .hero .hero-texto p {
+    margin: 0;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .inicio .hero .hero-contenido {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+    }
+}

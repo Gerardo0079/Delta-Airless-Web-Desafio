@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delta Airless El Salvador: máquinas de pintura Airless industriales, certificadas ISO 9001:2015. Cotiza tu equipo hoy.">
-    <title>Delta Airless | Inicio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Inicio | Delta Airless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="inicio">
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header class="header-principal">
         <div class="contenedor header-contenido">
             <a href="index.html" class="logo-marca">
@@ -16,7 +20,7 @@
             </a>
             <nav aria-label="Navegación principal">
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="activo">Inicio</a></li>
+                    <li><a href="index.html" class="activo" aria-current="page">Inicio</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -24,12 +28,15 @@
             </nav>
         </div>
     </header>
+
     <main>
-        <section class="hero">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="titulo-inicio">
             <div class="contenedor hero-contenido">
                 <div class="hero-texto">
                     <span class="hero-etiqueta">Certificación ISO 9001:2015</span>
-                    <h1>Pintura industrial <span>rápida, limpia y profesional</span></h1>
+                    <h1 id="titulo-inicio">Pintura industrial <span>rápida, limpia y profesional</span></h1>
                     <p>Máquinas de pintura Airless Delta: alta presión, acabado uniforme y menos desperdicio. Equipos pensados para obras, industria y proyectos exigentes en El Salvador.</p>
                     <div class="hero-botones">
                         <a href="productos.html" class="btn-primario">Ver productos</a>
@@ -41,17 +48,21 @@
                 </div>
             </div>
         </section>
+
+        <!-- ESTADÍSTICAS -->
         <section class="estadisticas" aria-label="Datos destacados">
             <div class="contenedor grid-stats">
                 <div class="stat"><strong>ISO 9001</strong><span>Calidad certificada</span></div>
-                <div class="stat"><strong>22,25 MPa</strong><span>Presión máxima</span></div>
+                <div class="stat"><strong>22.25 MPa</strong><span>Presión máxima</span></div>
                 <div class="stat"><strong>2.0 L/min</strong><span>Caudal máximo</span></div>
                 <div class="stat"><strong>16.5 kg</strong><span>Equipo portátil</span></div>
             </div>
         </section>
-        <section class="seccion">
+
+        <!-- VENTAJAS -->
+        <section class="seccion" aria-labelledby="titulo-ventajas">
             <div class="contenedor">
-                <h2 class="seccion-titulo">¿Por qué elegir Delta Airless?</h2>
+                <h2 class="seccion-titulo" id="titulo-ventajas">¿Por qué elegir Delta Airless?</h2>
                 <p class="seccion-subtitulo">Tecnología sin aire que atomiza la pintura con alta presión: mejor acabado y menos contaminación del material.</p>
                 <div class="grid-tarjetas">
                     <article class="tarjeta">
@@ -72,9 +83,11 @@
                 </div>
             </div>
         </section>
-        <section class="seccion seccion-gris">
+
+        <!-- PASOS PARA EMPEZAR -->
+        <section class="seccion seccion-gris" aria-labelledby="titulo-pasos">
             <div class="contenedor">
-                <h2 class="seccion-titulo">Así de fácil es empezar</h2>
+                <h2 class="seccion-titulo" id="titulo-pasos">Así de fácil es empezar</h2>
                 <p class="seccion-subtitulo">Te acompañamos desde la elección del equipo hasta que estás pintando.</p>
                 <ol class="pasos">
                     <li>
@@ -92,16 +105,18 @@
                 </ol>
             </div>
         </section>
-        <section class="seccion" id="videos">
+
+        <!-- VIDEOS DE INSTAGRAM -->
+        <section class="seccion" id="videos" aria-labelledby="titulo-videos">
             <div class="contenedor">
-                <h2 class="seccion-titulo">Mira nuestras máquinas en acción</h2>
+                <h2 class="seccion-titulo" id="titulo-videos">Mira nuestras máquinas en acción</h2>
                 <p class="seccion-subtitulo">Los videos más vistos de nuestro Instagram <strong>@airlessv</strong>.</p>
                 <div class="grid-videos">
                     <div class="video-card">
-                        <iframe src="https://www.instagram.com/reel/DdNpLOKu44M/embed" title="Video de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
+                        <iframe src="https://www.instagram.com/reel/DdNpLOKu44M/embed" title="Video 1 de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
                     </div>
                     <div class="video-card">
-                        <iframe src="https://www.instagram.com/reel/Dcoe6vaRVCK/embed" title="Video de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
+                        <iframe src="https://www.instagram.com/reel/Dcoe6vaRVCK/embed" title="Video 2 de Delta Airless en Instagram" loading="lazy" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="centrar">
@@ -109,9 +124,11 @@
                 </div>
             </div>
         </section>
-        <section class="seccion seccion-gris" id="testimonios">
+
+        <!-- TESTIMONIOS -->
+        <section class="seccion seccion-gris" id="testimonios" aria-labelledby="titulo-testimonios">
             <div class="contenedor">
-                <h2 class="seccion-titulo">Lo que dicen nuestros clientes</h2>
+                <h2 class="seccion-titulo" id="titulo-testimonios">Lo que dicen nuestros clientes</h2>
                 <p class="seccion-subtitulo">Comentarios reales de quienes ya pintan con Delta Airless.</p>
                 <div class="grid-testimonios">
                     <article class="testimonio">
@@ -132,23 +149,29 @@
                 </div>
             </div>
         </section>
-        <section class="cta-final">
+
+        <!-- LLAMADA A LA ACCIÓN FINAL -->
+        <section class="cta-final" aria-labelledby="titulo-cta">
             <div class="contenedor">
-                <h2>¿Listo para mejorar tus acabados?</h2>
+                <h2 id="titulo-cta">¿Listo para mejorar tus acabados?</h2>
                 <p>Escríbenos y cotiza tu máquina Airless Delta hoy mismo.</p>
                 <a href="contacto.html" class="btn-primario">Contáctanos</a>
             </div>
         </section>
+
     </main>
-    <footer id="contacto" class="footer-principal">
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina" class="footer-principal">
         <div class="contenedor">
             <h3>Contacto y Soporte</h3>
             <p>Teléfono: +503 2319-4425</p>
             <p>Celular: +503 7000-5512</p>
             <p>Email: parteselsalvador@yahoo.com</p>
             <p class="copy">&copy; 2026 Delta Industrial Paint Machine. Proveedor certificado ISO 9001:2015.</p>
-             <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
+            <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
         </div>
     </footer>
+
 </body>
 </html>
