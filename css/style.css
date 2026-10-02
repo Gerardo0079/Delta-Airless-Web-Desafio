@@ -511,6 +511,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra los bloques hijos horizontalmente */
+    text-align: center;
 }
 
 .hero h2 {
@@ -519,9 +520,11 @@ img {
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
-    max-width: 900px;
-    align-items: center; 
+    max-width: 900px; 
     color: var(--color-texto-blanco);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Esta línea pinta de azul la parte que metiste dentro del span */
@@ -535,6 +538,7 @@ img {
     max-width: 750px;
     margin: 0 auto;
     line-height: 1.6;
+    text-align: center;
 }
 #catalogo {
     padding: 60px 0;
