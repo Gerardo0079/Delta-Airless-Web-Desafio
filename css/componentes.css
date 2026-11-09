@@ -1,0 +1,53 @@
+.mensaje {
+  padding: 10px 14px;
+  margin: var(--espacio-mediano) 0;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+}
+.mensaje-info {
+  background: #1b2a41;
+  border-color: var(--color-delta-celeste);
+}
+.mensaje-exito {
+  background: #12301f;
+  border-color: #27ae60;
+}
+.mensaje-error {
+  background: #3a1a1a;
+  border-color: #e74c3c;
+}
+
+.estado-carga,
+.estado-vacio {
+  text-align: center;
+  color: var(--color-texto-gris);
+  padding: var(--espacio-grande) var(--espacio-mediano);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.badge-pendiente {
+  background: var(--color-acento-naranja);
+  color: #1c1c1c;
+}
+.badge-en-revision {
+  background: var(--color-delta-celeste);
+  color: #1c1c1c;
+}
+.badge-aprobada {
+  background: #27ae60;
+  color: #fff;
+}
+.badge-finalizada {
+  background: var(--color-delta-azul);
+  color: #fff;
+}
+.badge-cancelada {
+  background: #7f8c8d;
+  color: #fff;
+}

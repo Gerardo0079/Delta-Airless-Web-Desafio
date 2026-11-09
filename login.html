@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión o crea tu cuenta en Delta Airless para solicitar cotizaciones y dar seguimiento a tus solicitudes.">
+    <title>Acceso | Delta Airless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/componentes.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo-marca">DELTA <span>Airless</span></a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li id="nav-sesion"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-pagina" aria-labelledby="titulo-acceso">
+            <div class="contenedor hero-contenido">
+                <div>
+                    <h1 id="titulo-acceso">Accede a tu <span>cuenta</span></h1>
+                    <p class="hero-descripcion">Inicia sesión o crea una cuenta para enviar solicitudes de cotización, mantenimiento o repuestos y dar seguimiento a su estado.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-pagina" aria-label="Formularios de acceso">
+            <div class="contenedor contenedor-estrecho">
+
+                <div class="grupo-botones">
+                    <button type="button" class="btn-primario" id="tab-login" aria-controls="form-login">Iniciar sesión</button>
+                    <button type="button" class="btn-secundario" id="tab-registro" aria-controls="form-registro">Crear cuenta</button>
+                </div>
+
+                <!-- INICIAR SESIÓN -->
+                <form class="formulario-contacto" id="form-login" novalidate>
+                    <h2 class="titulo-seccion">Iniciar <span>sesión</span></h2>
+                    <div class="campo-formulario">
+                        <label for="login-correo">Correo electrónico <span class="asterisco-obligatorio">*</span></label>
+                        <input type="email" id="login-correo" name="correo" required autocomplete="email">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="login-password">Contraseña <span class="asterisco-obligatorio">*</span></label>
+                        <input type="password" id="login-password" name="password" required minlength="6" autocomplete="current-password">
+                    </div>
+                    <div id="mensaje-login" role="alert" hidden></div>
+                    <div class="grupo-botones">
+                        <button type="submit" class="btn-primario">Ingresar</button>
+                    </div>
+                </form>
+
+                <!-- CREAR CUENTA -->
+                <form class="formulario-contacto" id="form-registro" novalidate hidden>
+                    <h2 class="titulo-seccion">Crear <span>cuenta</span></h2>
+                    <p class="texto-ayuda">Los campos marcados con <span class="asterisco-obligatorio">*</span> son obligatorios.</p>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="reg-nombre">Nombre completo <span class="asterisco-obligatorio">*</span></label>
+                            <input type="text" id="reg-nombre" name="nombre" required minlength="3" maxlength="60" autocomplete="name">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="reg-empresa">Empresa</label>
+                            <input type="text" id="reg-empresa" name="empresa" maxlength="80" autocomplete="organization">
+                        </div>
+                    </div>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="reg-correo">Correo electrónico <span class="asterisco-obligatorio">*</span></label>
+                            <input type="email" id="reg-correo" name="correo" required autocomplete="email">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="reg-telefono">Teléfono <span class="asterisco-obligatorio">*</span></label>
+                            <input type="tel" id="reg-telefono" name="telefono" required pattern="[0-9+ \-]{8,15}" title="Entre 8 y 15 caracteres: números, espacios, + o guion" autocomplete="tel">
+                        </div>
+                    </div>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="reg-password">Contraseña <span class="asterisco-obligatorio">*</span></label>
+                            <input type="password" id="reg-password" name="password" required minlength="6" autocomplete="new-password">
+                            <small class="texto-ayuda">Mínimo 6 caracteres.</small>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="reg-password2">Confirmar contraseña <span class="asterisco-obligatorio">*</span></label>
+                            <input type="password" id="reg-password2" name="password2" required minlength="6" autocomplete="new-password">
+                        </div>
+                    </div>
+                    <div id="mensaje-registro" role="alert" hidden></div>
+                    <div class="grupo-botones">
+                        <button type="submit" class="btn-primario">Crear cuenta</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="footer-principal">
+        <div class="contenedor">
+            <h3>Contacto y Soporte</h3>
+            <p>Teléfono: +503 2319-4425</p>
+            <p>Celular: +503 7000-5512</p>
+            <p>Email: parteselsalvador@yahoo.com</p>
+            <p class="copy">&copy; 2026 Delta Industrial Paint Machine. Proveedor certificado ISO 9001:2015.</p>
+            <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/ui/header.ui.js"></script>
+    <script type="module" src="js/ui/auth.ui.js"></script>
+</body>
+</html>
