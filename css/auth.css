@@ -1,0 +1,2 @@
+/* css/auth.css - solo para login.html */
+#form-login, #form-registro { margin-top: var(--espacio-mediano); }
