@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function autenticado() { return request.auth != null; }
+
+    function esAdmin() {
+      return autenticado()
+        && exists(/databases/$(database)/documents/usuarios/$(request.auth.uid))
+        && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'admin';
+    }
+
+    match /usuarios/{userId} {
+      allow read:   if autenticado() && (request.auth.uid == userId || esAdmin());
+      // Al registrarse, el rol SOLO puede ser 'cliente'
+      allow create: if autenticado() && request.auth.uid == userId
+                    && request.resource.data.rol == 'cliente';
+      // Puede editar su perfil, pero nunca cambiar su rol
+      allow update: if autenticado() && request.auth.uid == userId
+                    && request.resource.data.rol == resource.data.rol;
+      allow delete: if false;
+    }
+
+    match /productos/{productoId} {
+      allow read: if true;                       // catálogo público
+      allow create, update, delete: if esAdmin();
+    }
+
+    match /solicitudes/{solicitudId} {
+      // El cliente solo crea solicitudes a su nombre, 'Pendiente' y sin respuesta
+      allow create: if autenticado()
+                    && request.resource.data.uidCliente == request.auth.uid
+                    && request.resource.data.estado == 'Pendiente'
+                    && request.resource.data.respuestaAdmin == ''
+                    && request.resource.data.cantidad is int
+                    && request.resource.data.cantidad >= 1
+                    && request.resource.data.cantidad <= 50;
+
+      allow read:   if autenticado()
+                    && (resource.data.uidCliente == request.auth.uid || esAdmin());
+
+      // Admin: cambia estado/respuesta. Cliente: SOLO puede cancelar la suya si está Pendiente
+      allow update: if esAdmin()
+                    || (autenticado()
+                        && resource.data.uidCliente == request.auth.uid
+                        && resource.data.estado == 'Pendiente'
+                        && request.resource.data.estado == 'Cancelada'
+                        && request.resource.data.diff(resource.data)
+                             .affectedKeys().hasOnly(['estado']));
+
+      allow delete: if esAdmin();
+    }
+  }
+}

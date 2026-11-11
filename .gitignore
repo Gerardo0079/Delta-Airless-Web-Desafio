@@ -1,0 +1,17 @@
+# Dependencias y variables de entorno
+node_modules/
+.env
+.env.*
+
+# Claves de cuentas de servicio de Firebase     
+*-adminsdk-*.json
+serviceAccount*.json
+
+# Credenciales de prueba para Moodle (fuera del repositorio)
+credenciales*.txt
+credenciales*.docx
+
+# Sistema
+.DS_Store
+Thumbs.db
+.vscode/

@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>
 
@@ -42,8 +43,8 @@
             <div class="contenedor contenedor-estrecho">
 
                 <div class="grupo-botones">
-                    <button type="button" class="btn-primario" id="tab-login" aria-controls="form-login">Iniciar sesión</button>
-                    <button type="button" class="btn-secundario" id="tab-registro" aria-controls="form-registro">Crear cuenta</button>
+                    <button type="button" class="btn-primario" id="tab-login" aria-controls="form-login" aria-pressed="true">Iniciar sesión</button>
+                    <button type="button" class="btn-secundario" id="tab-registro" aria-controls="form-registro" aria-pressed="false">Crear cuenta</button>
                 </div>
 
                 <!-- INICIAR SESIÓN -->
@@ -55,7 +56,7 @@
                     </div>
                     <div class="campo-formulario">
                         <label for="login-password">Contraseña <span class="asterisco-obligatorio">*</span></label>
-                        <input type="password" id="login-password" name="password" required minlength="6" autocomplete="current-password">
+                        <input type="password" id="login-password" name="password" required autocomplete="current-password">
                     </div>
                     <div id="mensaje-login" role="alert" hidden></div>
                     <div class="grupo-botones">
@@ -84,7 +85,7 @@
                         </div>
                         <div class="campo-formulario">
                             <label for="reg-telefono">Teléfono <span class="asterisco-obligatorio">*</span></label>
-                            <input type="tel" id="reg-telefono" name="telefono" required pattern="[0-9+ \-]{8,15}" title="Entre 8 y 15 caracteres: números, espacios, + o guion" autocomplete="tel">
+                            <input type="tel" id="reg-telefono" name="telefono" required placeholder="7000-0000" autocomplete="tel">
                         </div>
                     </div>
                     <div class="fila-campos">
