@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/catalogo.css">
 </head>
 
 <body>
@@ -42,123 +43,150 @@
             </div>
         </section>
 
-        <!-- CATÁLOGO DE MÁQUINAS -->
+        <!-- CATÁLOGO DE MÁQUINAS (contenido dinámico desde Firestore: js/ui/productos.ui.js) -->
         <section id="catalogo" class="contenedor" aria-labelledby="titulo-catalogo">
-            <h2 id="titulo-catalogo">Nuestros Modelos Industriales</h2>
-            <div class="grid-productos">
-
-                <!-- Delta 395 XR -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/395 XR ULTRA.jpeg" alt="Delta 395 XR (Ultra Max II)">
-                    </div>
-                    <h3>Delta 395 XR (Ultra Max II)</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> Brushless 220V</li>
-                        <li><strong>Potencia:</strong> 1500W</li>
-                        <li><strong>Caudal Máx.:</strong> 2.0 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.25 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.015 IN - 0.021 IN</li>
-                        <li><strong>Peso:</strong> 16.5 Kg</li>
-                        <li><strong>Producción:</strong> 5-8 m² por minuto</li>
-                        <li><strong>Resistencia:</strong> 3-4 Horas (Descanso 45M / 15M cada 40M)</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Ideal para:</strong> Pinturas base agua, aceite, anticorrosivas e impermeables.</p>
-                </article>
-
-                <!-- Delta 495 XR -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/495 XR ULTRA.jpeg" alt="Delta 495 XR (Ultra Max II)">
-                    </div>
-                    <h3>Delta 495 XR (Ultra Max II)</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> Brushless 110V</li>
-                        <li><strong>Potencia:</strong> 2300W</li>
-                        <li><strong>Caudal Máx.:</strong> 2.4 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.25 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.017 IN - 0.023 IN</li>
-                        <li><strong>Peso:</strong> 17 Kg</li>
-                        <li><strong>Producción:</strong> 5-8 m² por minuto</li>
-                        <li><strong>Resistencia:</strong> 3-4 Horas (Descanso 45M)</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Ideal para:</strong> Base agua, aceite, antioxidantes, epóxica para suelos e impermeables de techo.</p>
-                </article>
-
-                <!-- Delta Ultra 1095 XP -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/ULTRA 1095 XP.jpeg" alt="Delta Ultra 1095 XP">
-                    </div>
-                    <h3>Delta Ultra 1095 XP</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> Brushless 110V</li>
-                        <li><strong>Potencia:</strong> 3000W</li>
-                        <li><strong>Caudal Máx.:</strong> 4.8 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.27 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.023 IN - 0.037 IN</li>
-                        <li><strong>Peso:</strong> 38 Kg</li>
-                        <li><strong>Producción:</strong> 6-10 m² por minuto</li>
-                        <li><strong>Resistencia:</strong> 4-5 Horas (Descanso 45M)</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Ideal para:</strong> Base agua, aceite, antioxidantes, epóxica y anticorrosivos industriales.</p>
-                </article>
-
-                <!-- Delta Ultra Mark V -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/ULTRA MARK V.jpeg" alt="Delta Ultra Mark V">
-                    </div>
-                    <h3>Delta Ultra Mark V</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> Brushless 110V</li>
-                        <li><strong>Potencia:</strong> 4000W</li>
-                        <li><strong>Caudal Máx.:</strong> 6.3 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.27 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.025 IN - 0.047 IN</li>
-                        <li><strong>Peso:</strong> 42 Kg</li>
-                        <li><strong>Producción:</strong> 6-10 m² por minuto</li>
-                        <li><strong>Resistencia:</strong> 4-5 Horas (Descanso 45M)</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Ideal para:</strong> Base agua, aceite, yeso para tabla roca, epóxica y revestimientos.</p>
-                </article>
-
-                <!-- Delta H20-1S (señalización vial) -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/H20-1.jpeg" alt="Delta H20-1S (Señalización Vial)">
-                    </div>
-                    <h3>Delta H20-1S (Señalización Vial)</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> HONDA 6.5 HP</li>
-                        <li><strong>Caudal Máx.:</strong> 10 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.27 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.017 IN - 0.049 IN</li>
-                        <li><strong>Peso:</strong> 125 Kg</li>
-                        <li><strong>Estilo:</strong> Portátil</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Línea especial:</strong> Señalización vial de alto rendimiento.</p>
-                </article>
-
-                <!-- Delta H20-4 (señalización vial) -->
-                <article class="card-producto">
-                    <div class="imagen-producto">
-                        <img src="img/H20-4.jpeg" alt="Delta H20-4 (Señalización Vial)">
-                    </div>
-                    <h3>Delta H20-4 (Señalización Vial)</h3>
-                    <ul>
-                        <li><strong>Motor:</strong> HONDA 6.5 HP</li>
-                        <li><strong>Caudal Máx.:</strong> 10 Litros/Minuto</li>
-                        <li><strong>Presión Máx.:</strong> 22.27 MPa</li>
-                        <li><strong>Boquilla:</strong> 0.017 IN - 0.049 IN</li>
-                        <li><strong>Peso:</strong> 125 Kg</li>
-                        <li><strong>Estilo:</strong> Portátil</li>
-                    </ul>
-                    <p class="tipos-pintura"><strong>Línea especial:</strong> Señalización vial de alto rendimiento.</p>
-                </article>
-
+            <div class="catalogo-encabezado">
+                <h2 id="titulo-catalogo">Nuestros Modelos Industriales</h2>
+                <!-- Solo se muestra al administrador (lo activa productos.ui.js) -->
+                <button type="button" id="btn-nuevo-producto" class="btn-primario" hidden>+ Agregar máquina</button>
             </div>
+
+            <!-- Confirmaciones y errores de las operaciones del catálogo -->
+            <div id="mensaje-catalogo" role="status" hidden></div>
+
+            <!-- Búsqueda, filtro y ordenamiento (se procesan en JavaScript, sin consultar Firestore) -->
+            <div class="barra-filtros" role="search" aria-label="Buscar y filtrar máquinas">
+                <div class="campo-filtro">
+                    <label for="buscar-producto">Buscar</label>
+                    <input type="search" id="buscar-producto" placeholder="Ej. vial, epóxica, 495" autocomplete="off">
+                </div>
+                <div class="campo-filtro">
+                    <label for="filtro-motor">Tipo de motor</label>
+                    <select id="filtro-motor">
+                        <option value="">Todos</option>
+                        <option value="Brushless 110V">Brushless 110V</option>
+                        <option value="Brushless 220V">Brushless 220V</option>
+                        <option value="HONDA 6.5 HP">HONDA 6.5 HP</option>
+                    </select>
+                </div>
+                <div class="campo-filtro">
+                    <label for="ordenar-producto">Ordenar por</label>
+                    <select id="ordenar-producto">
+                        <option value="potencia-desc">Mayor potencia</option>
+                        <option value="potencia-asc">Menor potencia</option>
+                        <option value="caudal-desc">Mayor caudal</option>
+                        <option value="peso-asc">Menor peso</option>
+                    </select>
+                </div>
+            </div>
+            <p class="contador-resultados">Mostrando <span id="contador-resultados">0</span> máquinas</p>
+
+            <!-- Las tarjetas se generan con JavaScript -->
+            <div class="grid-productos" id="contenedor-productos" aria-live="polite"></div>
+            <noscript><p class="estado-vacio">Activa JavaScript para consultar el catálogo de maquinaria.</p></noscript>
         </section>
+
+        <!-- Formulario CRUD (crear / editar). Solo el administrador puede abrirlo. -->
+        <dialog id="dialogo-producto" aria-labelledby="titulo-dialogo-producto">
+            <form class="formulario-contacto" id="form-producto" novalidate>
+                <h2 class="titulo-seccion" id="titulo-dialogo-producto">Agregar máquina</h2>
+                <p class="texto-ayuda">Los campos marcados con <span class="asterisco-obligatorio">*</span> son obligatorios.</p>
+                <div id="mensaje-dialogo" role="alert" hidden></div>
+
+                <fieldset>
+                    <legend>Datos generales</legend>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="p-nombre">Nombre <span class="asterisco-obligatorio">*</span></label>
+                            <input type="text" id="p-nombre" name="nombre" required minlength="3" maxlength="80" placeholder="Ej. Delta 595 XR">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="p-linea">Línea <span class="asterisco-obligatorio">*</span></label>
+                            <input type="text" id="p-linea" name="linea" required maxlength="60" list="lista-lineas" placeholder="Ej. Línea Ultra">
+                            <datalist id="lista-lineas">
+                                <option value="Línea Ultra"></option>
+                                <option value="Señalización vial"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="p-motor">Motor <span class="asterisco-obligatorio">*</span></label>
+                            <select id="p-motor" name="motor" required>
+                                <option value="">Selecciona un motor</option>
+                                <option value="Brushless 110V">Brushless 110V</option>
+                                <option value="Brushless 220V">Brushless 220V</option>
+                                <option value="HONDA 6.5 HP">HONDA 6.5 HP</option>
+                            </select>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="p-estilo">Estilo</label>
+                            <input type="text" id="p-estilo" name="estilo" maxlength="40" value="Portátil">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Especificaciones técnicas</legend>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="p-potencia">Potencia (W) <span class="asterisco-obligatorio">*</span></label>
+                            <input type="number" id="p-potencia" name="potenciaW" required min="0" step="any" inputmode="decimal" placeholder="0 si el motor es a gasolina">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="p-caudal">Caudal máx. (L/min) <span class="asterisco-obligatorio">*</span></label>
+                            <input type="number" id="p-caudal" name="caudalLMin" required min="0" step="any" inputmode="decimal" placeholder="Ej. 2.4">
+                        </div>
+                    </div>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="p-presion">Presión máx. (MPa) <span class="asterisco-obligatorio">*</span></label>
+                            <input type="number" id="p-presion" name="presionMPa" required min="0" step="any" inputmode="decimal" placeholder="Ej. 22.25">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="p-peso">Peso (Kg) <span class="asterisco-obligatorio">*</span></label>
+                            <input type="number" id="p-peso" name="pesoKg" required min="0" step="any" inputmode="decimal" placeholder="Ej. 17">
+                        </div>
+                    </div>
+                    <div class="fila-campos">
+                        <div class="campo-formulario">
+                            <label for="p-boquilla">Boquilla <span class="asterisco-obligatorio">*</span></label>
+                            <input type="text" id="p-boquilla" name="boquilla" required maxlength="40" placeholder="Ej. 0.017 IN - 0.023 IN">
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="p-produccion">Producción</label>
+                            <input type="text" id="p-produccion" name="produccion" maxlength="60" placeholder="Ej. 5-8 m² por minuto">
+                        </div>
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="p-resistencia">Resistencia</label>
+                        <input type="text" id="p-resistencia" name="resistencia" maxlength="80" placeholder="Ej. 3-4 Horas (Descanso 45M)">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Presentación</legend>
+                    <div class="campo-formulario">
+                        <label for="p-ideal">Ideal para <span class="asterisco-obligatorio">*</span></label>
+                        <input type="text" id="p-ideal" name="idealPara" required maxlength="200" placeholder="Ej. Base agua, aceite y anticorrosivas.">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="p-imagen">Imagen (ruta o URL https)</label>
+                        <input type="text" id="p-imagen" name="imagenUrl" maxlength="200" placeholder="Ej. img/495 XR ULTRA.jpeg">
+                        <span class="texto-ayuda">Si la dejas vacía se usa una imagen genérica. Respeta mayúsculas y espacios del nombre del archivo.</span>
+                    </div>
+                    <label class="opcion-seleccionable">
+                        <input type="checkbox" id="p-activo" name="activo" checked>
+                        Visible para los clientes
+                    </label>
+                </fieldset>
+
+                <div class="grupo-botones">
+                    <button type="submit" id="btn-guardar-producto" class="btn-primario">Guardar máquina</button>
+                    <button type="button" class="btn-secundario" data-cerrar>Cancelar</button>
+                </div>
+            </form>
+        </dialog>
 
         <!-- VENTAJAS GENERALES -->
         <section id="ventajas" class="contenedor" aria-labelledby="titulo-ventajas">

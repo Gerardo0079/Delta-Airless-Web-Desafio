@@ -1,0 +1,179 @@
+/* ==========================================================================
+   css/catalogo.css - estilos propios de productos.html 
+   Se carga DESPUÉS de style.css y componentes.css. No modifica esos archivos:
+   solo agrega clases nuevas y ajusta lo del catálogo.
+   Índice: 1. Encabezado y filtros | 2. Cuadrícula de tarjetas | 3. Botones de administrador
+           4. Diálogo del formulario CRUD
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Encabezado del catálogo y barra de filtros
+   -------------------------------------------------------------------------- */
+.catalogo-encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-pequeno) var(--espacio-mediano);
+}
+
+.catalogo-encabezado h2 {
+  margin-bottom: 0;
+}
+
+/* El .btn-primario trae margin-top: 20px; aquí va alineado con el título */
+.catalogo-encabezado .btn-primario {
+  margin-top: 0;
+}
+
+/* Móvil primero: controles apilados. Desde 768px: tres columnas */
+.barra-filtros {
+  display: grid;
+  gap: var(--espacio-mediano);
+  margin: var(--espacio-mediano) 0 var(--espacio-pequeno);
+  padding: var(--espacio-mediano);
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+}
+
+.campo-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;                    /* evita desbordes en móvil */
+}
+
+.campo-filtro label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.campo-filtro input,
+.campo-filtro select {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-texto-blanco);
+  background-color: var(--color-fondo-oscuro);
+  border: 1px solid #555555;
+  border-radius: 4px;
+}
+
+.campo-filtro :focus-visible {
+  outline: none;
+  border-color: var(--color-delta-celeste);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.contador-resultados {
+  margin-bottom: var(--espacio-pequeno);
+  font-size: 0.9rem;
+  color: var(--color-texto-gris);
+}
+
+.contador-resultados span {
+  font-weight: 700;
+  color: var(--color-delta-celeste);
+}
+
+@media (min-width: 768px) {
+  .barra-filtros {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Cuadrícula de tarjetas
+   style.css usa minmax(400px, 1fr): a 375px de ancho la tarjeta se sale de la pantalla.
+   min(100%, 400px) deja idéntico el diseño en escritorio y evita el desborde en móvil.
+   -------------------------------------------------------------------------- */
+.grid-productos {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+}
+
+/* Mensajes de carga, error o vacío: ocupan todo el ancho, no una sola columna */
+.grid-productos > .estado-carga,
+.grid-productos > .estado-vacio,
+.grid-productos > .mensaje {
+  grid-column: 1 / -1;
+}
+
+.card-producto h3 .badge {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.badge-inactivo {
+  background: #7f8c8d;
+  color: #ffffff;
+}
+
+.card-producto .btn-primario {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. Botones Editar / Eliminar (solo se generan para el administrador)
+   -------------------------------------------------------------------------- */
+.card-producto .grupo-botones .btn-secundario {
+  flex: 1 1 120px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.btn-peligro {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.btn-peligro:hover {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.card-producto button:disabled,
+#dialogo-producto button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* --------------------------------------------------------------------------
+   4. Diálogo del formulario (<dialog id="dialogo-producto">)
+   El formulario reutiliza .formulario-contacto, .fila-campos y .campo-formulario de style.css.
+   IMPORTANTE: el reset global (* { margin: 0 }) anula el centrado nativo del <dialog>,
+   por eso se declara margin: auto. No se define "display" para no romper el cierre del diálogo.
+   -------------------------------------------------------------------------- */
+#dialogo-producto {
+  margin: auto;
+  width: min(94vw, 760px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 0;
+  color: var(--color-texto-blanco);
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+#dialogo-producto::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+#dialogo-producto .formulario-contacto {
+  border-top: 4px solid var(--color-delta-celeste);
+  border-radius: 0;
+}
+
+/* Casilla "visible para clientes": el estilo de inputs de style.css la excluye, se alinea aquí */
+#dialogo-producto .opcion-seleccionable {
+  margin-bottom: var(--espacio-mediano);
+}
+
+#dialogo-producto .grupo-botones > * {
+  flex: 1 1 160px;
+  text-align: center;
+}
