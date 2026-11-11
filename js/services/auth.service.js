@@ -1,59 +1,71 @@
-// js/services/auth.service.js
+// Autenticación REAL con Firebase Auth + perfil/rol en Firestore (colección 'usuarios').
 import { auth, db } from "../config/firebase.js";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
-/* ==========================================================================
-   MODO SIMULACIÓN (FASE INICIAL)
-   Cambia esta constante en tu computadora para probar las vistas:
-   - "admin"   -> Prueba crear/editar máquinas y responder solicitudes
-   - "cliente" -> Prueba enviar solicitudes en contacto y ver tu historial
-   - null      -> Prueba cómo se ve la página para un visitante sin sesión
-   ========================================================================== */
-const ROL_SIMULADO = "admin";
-
-const USUARIOS_PRUEBA = {
-  admin: {
-    uid: "uid_admin_delta_01",
-    nombre: "Administrador Grupo Partes",
-    empresa: "Grupo Partes El Salvador",
-    correo: "parteselsalvador@yahoo.com",
-    telefono: "2319-4425",
-    rol: "admin"
-  },
-  cliente: {
-    uid: "uid_cliente_delta_02",
-    nombre: "Carlos Martínez",
-    empresa: "Constructora del Pacífico",
-    correo: "carlos@ejemplo.com",
-    telefono: "7000-5512",
-    rol: "cliente"
+// Lee el perfil (nombre, rol, etc.) guardado en usuarios/{uid}
+async function leerPerfil(user) {
+  try {
+    const snap = await getDoc(doc(db, "usuarios", user.uid));
+    if (snap.exists()) return { uid: user.uid, ...snap.data() };
+  } catch (error) {
+    console.error("No se pudo leer el perfil:", error);
   }
-};
-
-/**
- * Devuelve la sesión activa del usuario (o null si no ha iniciado sesión).
- * Es asíncrona para mantener compatibilidad total cuando se conecte Firestore.
- */
-export async function obtenerSesionActual() {
-  if (!ROL_SIMULADO) {
-    return null;
-  }
-  return USUARIOS_PRUEBA[ROL_SIMULADO];
+  // Sin perfil en Firestore: se trata como cliente (NUNCA como admin)
+  return {
+    uid: user.uid, nombre: user.email, empresa: "", telefono: "",
+    correo: user.email, rol: "cliente"
+  };
 }
 
-/**
- * Ejecuta un callback cada vez que cambia el estado de la sesión.
- * Útil para actualizar el menú de navegación y mostrar/ocultar botones por rol.
- */
+export async function registrarUsuario({ nombre, empresa, telefono, correo, password }) {
+  const credencial = await createUserWithEmailAndPassword(auth, correo, password);
+  const perfil = {
+    nombre,
+    empresa: empresa || "",
+    telefono,
+    correo,
+    rol: "cliente",                       // FIJO: nadie se registra como admin
+    fechaRegistro: new Date().toISOString()
+  };
+  try {
+    await setDoc(doc(db, "usuarios", credencial.user.uid), perfil);
+  } catch (error) {
+    error.code = "perfil/no-guardado";    // la cuenta existe pero el perfil no se guardó
+    throw error;
+  }
+  return { uid: credencial.user.uid, ...perfil };
+}
+
+export async function iniciarSesion(correo, password) {
+  await signInWithEmailAndPassword(auth, correo, password);
+}
+
+export async function cerrarSesion() {
+  await signOut(auth);
+}
+
+// Devuelve el perfil completo del usuario o null si no hay sesión.
+// authStateReady() espera a que Firebase restaure la sesión guardada;
+// sin esto, currentUser sale null al cargar la página aunque el usuario esté logueado.
+export async function obtenerSesionActual() {
+  await auth.authStateReady();
+  return auth.currentUser ? leerPerfil(auth.currentUser) : null;
+}
+
+// callback(usuario | null) se ejecuta al cargar y cada vez que cambia la sesión
 export function escucharCambiosSesion(callback) {
-  obtenerSesionActual().then((usuario) => {
-    callback(usuario);
+  return onAuthStateChanged(auth, async (user) => {
+    callback(user ? await leerPerfil(user) : null);
   });
 }
 
-/**
- * Verifica rápidamente si hay un administrador activo.
- */
 export async function esUsuarioAdmin() {
-  const usuario = await obtenerSesionActual();
-  return usuario !== null && usuario.rol === "admin";
+  const sesion = await obtenerSesionActual();
+  return sesion?.rol === "admin";
 }
