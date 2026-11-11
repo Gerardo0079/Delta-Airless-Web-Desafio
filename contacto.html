@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/solicitudes.css">
 </head>
 <body>
 
@@ -46,7 +47,11 @@
         <section class="seccion-pagina" aria-labelledby="titulo-formulario">
             <div class="contenedor contenedor-estrecho">
 
-                <form class="formulario-contacto" id="formulario" action="#" method="post" enctype="text/plain">
+                <!-- Contenedor para avisos y mensajes de éxito/error -->
+                <div id="mensaje-estado" role="status" hidden></div>
+
+                <!-- Formulario limpio sin action ni enctype para controlarlo por JS -->
+                <form class="formulario-contacto" id="formulario">
                     <h2 class="titulo-seccion" id="titulo-formulario">Envíanos <span>tu solicitud</span></h2>
                     <p class="texto-ayuda">Los campos marcados con <span class="asterisco-obligatorio">*</span> son obligatorios.</p>
 
@@ -88,18 +93,9 @@
                         <div class="fila-campos">
                             <div class="campo-formulario">
                                 <label for="modelo">Modelo de interés</label>
+                                <!-- Se llenará dinámicamente desde Firestore en solicitudes.ui.js -->
                                 <select id="modelo" name="modelo">
-                                    <option value="">Selecciona un modelo</option>
-                                    <optgroup label="Línea Ultra">
-                                        <option value="395-xr">395 XR Ultra</option>
-                                        <option value="495-xr">495 XR Ultra</option>
-                                        <option value="1095-xp">1095 Ultra XP</option>
-                                        <option value="mark-v">MARK V</option>
-                                    </optgroup>
-                                    <optgroup label="Señalización vial">
-                                        <option value="h20">H20</option>
-                                    </optgroup>
-                                    <option value="no-se">Aún no lo sé</option>
+                                    <option value="">Cargando modelos...</option>
                                 </select>
                             </div>
                             <div class="campo-formulario">
@@ -130,6 +126,40 @@
                     </div>
                 </form>
 
+                <!-- SECCIÓN 1: BANDEJA DE MIS SOLICITUDES (Visible solo para Clientes) -->
+                <section id="seccion-mis-solicitudes" hidden>
+                    <h2>Mis Solicitudes</h2>
+                    <div id="lista-mis-solicitudes">
+                        <!-- Las solicitudes del usuario se inyectarán aquí por JavaScript -->
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: PANEL DE ADMINISTRADOR (Visible solo para Admins) -->
+                <section id="panel-admin" hidden>
+                    <h2>Panel de Administración de Solicitudes</h2>
+                    
+                    <!-- Indicadores (KPIs) -->
+                    <div id="kpis" class="kpi-grid">
+                        <!-- Se llenarán dinámicamente con JS -->
+                    </div>
+
+                    <div class="campo-formulario" style="margin-top: 20px;">
+                        <label for="filtro-estado">Filtrar por estado:</label>
+                        <select id="filtro-estado">
+                            <option value="">Todos los estados</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En revisión">En revisión</option>
+                            <option value="Aprobada">Aprobada</option>
+                            <option value="Finalizada">Finalizada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+                    </div>
+
+                    <div id="lista-admin">
+                        <!-- Todas las solicitudes del sistema para el administrador -->
+                    </div>
+                </section>
+
             </div>
         </section>
 
@@ -153,17 +183,19 @@
         </section>
 
     </main>
-     <footer id="contacto" class="footer-principal">
-            <div class="contenedor">
-                <h3>Contacto y Soporte</h3>
-                <p>Teléfono: +503 2319-4425</p>
-                <p>Celular: +503 7000-5512</p>
-                <p>Email: parteselsalvador@yahoo.com</p>
-                <p class="copy">&copy; 2026 Delta Industrial Paint Machine. Proveedor certificado ISO 9001:2015.</p>
-                <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
-            </div>
-      </footer>
-      <script type="module" src="js/ui/header.ui.js"></script>
-      <script type="module" src="js/ui/solicitudes.ui.js"></script>
+
+    <footer id="contacto" class="footer-principal">
+        <div class="contenedor">
+            <h3>Contacto y Soporte</h3>
+            <p>Teléfono: +503 2319-4425</p>
+            <p>Celular: +503 7000-5512</p>
+            <p>Email: parteselsalvador@yahoo.com</p>
+            <p class="copy">&copy; 2026 Delta Industrial Paint Machine. Proveedor certificado ISO 9001:2015.</p>
+            <p>Síguenos en <a href="https://www.instagram.com/airlessv" target="_blank" rel="noopener">Instagram @airlessv</a></p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/ui/header.ui.js"></script>
+    <script type="module" src="js/ui/solicitudes.ui.js"></script>
 </body>
 </html>
