@@ -5,9 +5,9 @@ export function escaparHTML(valor) {
   }[c]));
 }
 
-// Muestra un mensaje en un contenedor con role="status" o role="alert"
+// Muestra un mensaje en un contenedor (usar role="status" o role="alert" en el HTML)
+// tipo: "info" | "exito" | "error". Si texto es "" el contenedor se oculta.
 export function mostrarMensaje(contenedor, texto, tipo = "info") {
-  // tipo: "info" | "exito" | "error"
   contenedor.textContent = texto;
   contenedor.className = `mensaje mensaje-${tipo}`;
   contenedor.hidden = !texto;

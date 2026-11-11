@@ -1,3 +1,10 @@
+
+/* El atributo hidden SIEMPRE debe ocultar, aunque otra regla defina display */
+[hidden] {
+  display: none !important;
+}
+
+/* Mensajes de éxito / error / información */
 .mensaje {
   padding: 10px 14px;
   margin: var(--espacio-mediano) 0;
@@ -17,6 +24,7 @@
   border-color: #e74c3c;
 }
 
+/* Estados de carga y de lista vacía */
 .estado-carga,
 .estado-vacio {
   text-align: center;
@@ -24,6 +32,7 @@
   padding: var(--espacio-grande) var(--espacio-mediano);
 }
 
+/* Badges de estado (solicitudes) y de rol (menú) */
 .badge {
   display: inline-block;
   padding: 2px 10px;
@@ -50,4 +59,41 @@
 .badge-cancelada {
   background: #7f8c8d;
   color: #fff;
+}
+.badge-rol-admin {
+  background: var(--color-acento-naranja);
+  color: #1c1c1c;
+}
+.badge-rol-cliente {
+  background: var(--color-delta-celeste);
+  color: #1c1c1c;
+}
+
+/* Bloque de sesión dentro del menú de navegación */
+.sesion-usuario {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espacio-pequeno);
+}
+.sesion-nombre {
+  font-weight: 500;
+}
+.btn-cerrar-sesion {
+  background: transparent;
+  color: var(--color-texto-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: 4px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.btn-cerrar-sesion:hover {
+  border-color: var(--color-delta-celeste);
+  color: var(--color-delta-celeste);
+}
+.btn-cerrar-sesion:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
