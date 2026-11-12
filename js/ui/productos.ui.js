@@ -74,11 +74,22 @@ function filaEspecificacion(etiqueta, valor) {
     : "";
 }
 
+// Número + unidad. Si el dato falta (null, undefined, "" o no numérico) la fila NO se pinta:
+// así nunca llega a pantalla "undefined Litros/Minuto" ni "NaN Kg".
+function filaMedida(etiqueta, valor, unidad) {
+  const hayDato = valor !== null && valor !== "" && Number.isFinite(Number(valor));
+  return hayDato ? filaEspecificacion(etiqueta, `${valor} ${unidad}`) : "";
+}
+
 function crearTarjeta(p) {
   // Las H20 tienen motor Honda: en Firestore la potencia viene null (seed) o 0.
   const potencia = Number(p.potenciaW) > 0 ? `${p.potenciaW} W` : "No aplica (motor a gasolina)";
   const esVial = p.linea === "Señalización vial";
   const etiquetaUso = esVial ? "Línea especial" : "Ideal para";
+  const uso = String(p.idealPara ?? "").trim();
+  const parrafoUso = uso
+    ? `<p class="tipos-pintura"><strong>${etiquetaUso}:</strong> ${escaparHTML(uso)}</p>`
+    : "";
 
   const aviso = esAdmin && p.activo === false
     ? '<span class="badge badge-inactivo">Oculta para clientes</span>'
@@ -101,15 +112,15 @@ function crearTarjeta(p) {
       <ul>
         ${filaEspecificacion("Motor", p.motor)}
         <li><strong>Potencia:</strong> ${escaparHTML(potencia)}</li>
-        ${filaEspecificacion("Caudal Máx.", `${p.caudalLMin} Litros/Minuto`)}
-        ${filaEspecificacion("Presión Máx.", `${p.presionMPa} MPa`)}
+        ${filaMedida("Caudal Máx.", p.caudalLMin, "Litros/Minuto")}
+        ${filaMedida("Presión Máx.", p.presionMPa, "MPa")}
         ${filaEspecificacion("Boquilla", p.boquilla)}
-        ${filaEspecificacion("Peso", `${p.pesoKg} Kg`)}
+        ${filaMedida("Peso", p.pesoKg, "Kg")}
         ${filaEspecificacion("Producción", p.produccion)}
         ${filaEspecificacion("Resistencia", p.resistencia)}
         ${filaEspecificacion("Estilo", p.estilo)}
       </ul>
-      <p class="tipos-pintura"><strong>${etiquetaUso}:</strong> ${escaparHTML(p.idealPara)}</p>
+      ${parrafoUso}
       <a class="btn-primario" href="contacto.html?modelo=${encodeURIComponent(p.id)}">Solicitar cotización / servicio</a>
       ${botonesAdmin}
     </article>`;
@@ -251,6 +262,23 @@ function abrirFormulario(id = null) {
   $form.elements.nombre.focus();
 }
 
+// Varios errores se muestran como LISTA: nueve frases pegadas en un párrafo son ilegibles en el celular.
+// Se arma con textContent (nunca innerHTML), igual que mostrarMensaje() de dom.js.
+function mostrarErroresFormulario(errores) {
+  mostrarMensaje($msgDialogo, "", "error");      // limpia el contenido y deja las clases de error
+  const titulo = document.createElement("strong");
+  titulo.textContent = errores.length === 1 ? "Revisa este campo:" : "Revisa estos campos:";
+  const lista = document.createElement("ul");
+  errores.forEach((texto) => {
+    const item = document.createElement("li");
+    item.textContent = texto;
+    lista.append(item);
+  });
+  $msgDialogo.append(titulo, lista);
+  $msgDialogo.hidden = false;
+  $msgDialogo.scrollIntoView({ block: "nearest" });
+}
+
 function textoError(error) {
   if (error?.code === "permission-denied")
     return "No tienes permiso para esta operación. Inicia sesión como administrador.";
@@ -265,8 +293,7 @@ $form.addEventListener("submit", async (evento) => {
   const datos = leerFormulario();
   const errores = validarProducto(datos);
   if (errores.length) {
-    mostrarMensaje($msgDialogo, errores.join(" "), "error");
-    $msgDialogo.scrollIntoView({ block: "nearest" });
+    mostrarErroresFormulario(errores);
     return;                                      // NO se escribe nada en Firestore
   }
 

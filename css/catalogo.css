@@ -177,3 +177,13 @@
   flex: 1 1 160px;
   text-align: center;
 }
+
+/* Lista de errores de validación (se genera en productos.ui.js) */
+#mensaje-dialogo ul {
+  margin: 8px 0 0 20px;
+  list-style: disc;
+}
+
+#mensaje-dialogo li {
+  margin-bottom: 4px;
+}

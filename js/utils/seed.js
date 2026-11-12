@@ -1,4 +1,12 @@
 // js/utils/seed.js
+// ============================================================================
+// ESTE ARCHIVO NO SE IMPORTA EN NINGUNA PÁGINA (ni en un <script> de HTML ni en otro módulo).
+// Se conserva en el repositorio solo como EVIDENCIA de los datos iniciales del catálogo (Req. 7).
+// Los 6 equipos ya están cargados en Firestore. NO lo importes ni lo ejecutes: setDoc()
+// sobrescribiría los cambios que se hagan desde el CRUD (y con las reglas publicadas,
+// solo un administrador podría escribir de todas formas).
+// Si algún día hay que volver a sembrar: ejecutarlo UNA vez como admin y retirar el import.
+// ============================================================================
 import { db } from "../config/firebase.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
