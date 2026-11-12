@@ -1,0 +1,165 @@
+
+/* Solicitudes y panel administrativo: conserva la paleta de css/style.css. */
+#seccion-mis-solicitudes,
+#panel-admin {
+  margin-top: var(--espacio-grande);
+}
+
+#seccion-mis-solicitudes > h2,
+#panel-admin > h2 {
+  margin-bottom: var(--espacio-mediano);
+  font-family: var(--fuente-titulos);
+}
+
+#mensaje-estado a {
+  color: var(--color-delta-celeste);
+  font-weight: 700;
+}
+
+#formulario button:disabled,
+.btn-cancelar-solicitud:disabled,
+.form-admin-solicitud button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: var(--espacio-mediano);
+  margin-bottom: var(--espacio-grande);
+}
+
+.kpi-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--color-borde);
+  border-top: 3px solid var(--color-delta-celeste);
+  border-radius: var(--radio-borde);
+  background: var(--color-tarjeta);
+}
+
+.kpi-etiqueta {
+  color: var(--color-texto-gris);
+  font-size: 0.9rem;
+}
+
+.kpi-valor {
+  font-family: var(--fuente-titulos);
+  font-size: 2.1rem;
+  line-height: 1.2;
+}
+
+.filtro-solicitudes {
+  margin-top: var(--espacio-mediano);
+  max-width: 340px;
+}
+
+.filtro-solicitudes select,
+.form-admin-solicitud select,
+.form-admin-solicitud textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  color: var(--color-texto-blanco);
+  background: var(--color-fondo-oscuro);
+  border: 1px solid #555;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.form-admin-solicitud textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.filtro-solicitudes :focus-visible,
+.form-admin-solicitud :focus-visible {
+  outline: 2px solid var(--color-delta-celeste);
+  outline-offset: 2px;
+}
+
+#lista-mis-solicitudes,
+#lista-admin {
+  display: grid;
+  gap: var(--espacio-mediano);
+}
+
+.tarjeta-solicitud {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--color-borde);
+  border-left: 4px solid var(--color-delta-celeste);
+  border-radius: var(--radio-borde);
+  background: var(--color-tarjeta);
+}
+
+.solicitud-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: var(--espacio-mediano);
+}
+
+.solicitud-cabecera h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.03rem;
+}
+
+.solicitud-detalles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 6px 14px;
+  margin-bottom: var(--espacio-mediano);
+  color: var(--color-texto-gris);
+  font-size: 0.9rem;
+}
+
+.solicitud-detalles strong,
+.solicitud-mensaje strong,
+.solicitud-respuesta strong {
+  color: var(--color-texto-blanco);
+}
+
+.solicitud-mensaje,
+.solicitud-respuesta {
+  margin-top: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.solicitud-respuesta {
+  padding: 12px;
+  background: #183247;
+  border-radius: 4px;
+}
+
+.btn-cancelar-solicitud {
+  margin-top: var(--espacio-mediano);
+}
+
+.form-admin-solicitud {
+  margin-top: var(--espacio-mediano);
+  padding-top: var(--espacio-mediano);
+  border-top: 1px solid var(--color-borde);
+}
+
+.admin-campos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px 20px;
+}
+
+.form-admin-solicitud .btn-primario {
+  margin-top: 4px;
+}
+
+@media (min-width: 720px) {
+  .admin-campos {
+    grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+  }
+}

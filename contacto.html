@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -60,7 +61,7 @@
                         <div class="fila-campos">
                             <div class="campo-formulario">
                                 <label for="nombre">Nombre completo <span class="asterisco-obligatorio">*</span></label>
-                                <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Martínez" required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]{3,60}" title="Solo letras y espacios (mínimo 3 caracteres)" autocomplete="name">
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Martínez" required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü' .\-]{3,60}" title="Entre 3 y 60 caracteres: letras, espacios, apóstrofes, puntos o guiones" autocomplete="name">
                             </div>
                             <div class="campo-formulario">
                                 <label for="empresa">Empresa</label>
@@ -95,7 +96,8 @@
                                 <label for="modelo">Modelo de interés</label>
                                 <!-- Se llenará dinámicamente desde Firestore en solicitudes.ui.js -->
                                 <select id="modelo" name="modelo">
-                                    <option value="">Cargando modelos...</option>
+                                    <option value="">Selecciona un modelo</option>
+                                    <option value="no-se">Aún no lo sé</option>
                                 </select>
                             </div>
                             <div class="campo-formulario">
@@ -137,13 +139,13 @@
                 <!-- SECCIÓN 2: PANEL DE ADMINISTRADOR (Visible solo para Admins) -->
                 <section id="panel-admin" hidden>
                     <h2>Panel de Administración de Solicitudes</h2>
-                    
+
                     <!-- Indicadores (KPIs) -->
                     <div id="kpis" class="kpi-grid">
                         <!-- Se llenarán dinámicamente con JS -->
                     </div>
 
-                    <div class="campo-formulario" style="margin-top: 20px;">
+                    <div class="campo-formulario filtro-solicitudes">
                         <label for="filtro-estado">Filtrar por estado:</label>
                         <select id="filtro-estado">
                             <option value="">Todos los estados</option>
